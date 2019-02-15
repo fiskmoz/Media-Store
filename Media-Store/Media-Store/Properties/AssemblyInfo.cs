@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mediaaffär")]
+[assembly: AssemblyTitle("Media-Store")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Mediaaffär")]
+[assembly: AssemblyProduct("Media-Store")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1b78b6ef-0d80-4c8f-b658-0207d8445a8b")]
+[assembly: Guid("6db35d1a-8c12-46f3-b8e0-7e598e48d857")]
 
 // Version information for an assembly consists of the following four values:
 //

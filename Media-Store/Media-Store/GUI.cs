@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mediaaffär
+namespace Media_Store
 {
     public partial class GUI : Form
     {

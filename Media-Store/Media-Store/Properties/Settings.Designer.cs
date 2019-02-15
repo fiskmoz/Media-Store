@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mediaaffär.Properties
+namespace Media_Store.Properties
 {
 
 
