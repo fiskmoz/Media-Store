@@ -8,5 +8,9 @@ namespace Media_Store
 {
     class Inventory
     {
+        public Inventory()
+        {
+
+        }
     }
 }

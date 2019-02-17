@@ -15,9 +15,7 @@ namespace Media_Store
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI());
+            Driver driver = new Driver();
         }
     }
 }
