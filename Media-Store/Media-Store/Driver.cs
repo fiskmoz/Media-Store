@@ -17,8 +17,9 @@ namespace Media_Store
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             gui = new GUI();
-            Application.Run(gui);
             inventory = new Inventory();
+            gui.CreateNewSetSelection(inventory.AvalibleProducts);
+            Application.Run(gui);
         }
     }
 }
