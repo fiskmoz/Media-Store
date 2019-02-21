@@ -18,8 +18,23 @@ namespace Media_Store
             Application.SetCompatibleTextRenderingDefault(false);
             gui = new GUI();
             inventory = new Inventory();
-            gui.CreateNewSetSelection(inventory.AvalibleProducts);
+            gui.CreateNewSetSelection(inventory.ProductSelection);
+            SetListeners();
             Application.Run(gui);
         }
+
+        private void SetListeners()
+        {
+            gui.CreateBook += new EventHandler<StringListEventArgs>(inventory.CreateBook);
+            gui.CreateMovie += new EventHandler<StringListEventArgs>(inventory.CreateMovie);
+            gui.CreateCD += new EventHandler<StringListEventArgs>(inventory.CreateCD);
+            gui.CreateGame += new EventHandler<StringListEventArgs>(inventory.CreateGame);
+        }
+    }
+
+
+    public class StringListEventArgs : EventArgs
+    {
+        public List<string> str = new List<string>();
     }
 }

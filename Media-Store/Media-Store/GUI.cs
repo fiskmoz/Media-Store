@@ -12,16 +12,19 @@ namespace Media_Store
 {
     public partial class GUI : Form
     {
-        public event EventHandler<EventArgs> alertStock;
-        public event EventHandler<EventArgs> alertStore;
+        public event EventHandler<StringListEventArgs> CreateBook;
+        public event EventHandler<StringListEventArgs> CreateMovie;
+        public event EventHandler<StringListEventArgs> CreateCD;
+        public event EventHandler<StringListEventArgs> CreateGame;
+        public event EventHandler<StringListEventArgs> alertStore;
 
         public GUI()
         {
             InitializeComponent();
-            textBox6.ReadOnly = true;
             textBox7.ReadOnly = true;
             textBox8.ReadOnly = true;
             textBox9.ReadOnly = true;
+            textBox10.ReadOnly = true;
         }
 
         private void addProductBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,61 +32,66 @@ namespace Media_Store
             switch(addProductBox.SelectedIndex)
             {
                 case 0:
-                    textBox4.ReadOnly = false;
                     textBox5.ReadOnly = false;
-                    textBox6.ReadOnly = true;
+                    textBox6.ReadOnly = false;
                     textBox7.ReadOnly = true;
                     textBox8.ReadOnly = true;
                     textBox9.ReadOnly = true;
+                    textBox10.ReadOnly = true;
                     break;
                 case 1:
-                    textBox4.ReadOnly = true;
-                    textBox5.ReadOnly = true;
-                    textBox6.ReadOnly = false;
-                    textBox7.ReadOnly = false;
-                    textBox8.ReadOnly = true;
-                    textBox9.ReadOnly = true;
-                    break;
-                case 2:
-                    textBox4.ReadOnly = true;
                     textBox5.ReadOnly = true;
                     textBox6.ReadOnly = true;
-                    textBox7.ReadOnly = true;
+                    textBox7.ReadOnly = false;
                     textBox8.ReadOnly = false;
                     textBox9.ReadOnly = true;
+                    textBox10.ReadOnly = true;
                     break;
-                case 3:
-                    textBox4.ReadOnly = false;
-                    textBox5.ReadOnly = false;
+                case 2:
+                    textBox5.ReadOnly = true;
                     textBox6.ReadOnly = true;
                     textBox7.ReadOnly = true;
                     textBox8.ReadOnly = true;
                     textBox9.ReadOnly = false;
+                    textBox10.ReadOnly = true;
+                    break;
+                case 3:
+                    textBox5.ReadOnly = false;
+                    textBox6.ReadOnly = false;
+                    textBox7.ReadOnly = true;
+                    textBox8.ReadOnly = true;
+                    textBox9.ReadOnly = true;
+                    textBox10.ReadOnly = false;
                     break;
             }
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "GRABIT";
-            textBox2.Text = "GRABIT";
-            textBox3.Text = "GRABIT";
+            StringListEventArgs ev = new StringListEventArgs();
+            ev.str.Add(textBox1.Text);
+            ev.str.Add(textBox2.Text);
+            ev.str.Add(textBox3.Text);
+            ev.str.Add(textBox3.Text);
             switch (addProductBox.SelectedIndex)
             {
                 case 0:
-                    textBox4.Text = "GRABIT";
-                    textBox5.Text = "GRABIT";
-
+                    ev.str.Add(textBox5.Text);
+                    ev.str.Add(textBox6.Text);
+                    CreateBook(this, ev);
                     break;
                 case 1:
-                    textBox6.Text = "GRABIT";
-                    textBox7.Text = "GRABIT";
+                    ev.str.Add(textBox7.Text);
+                    ev.str.Add(textBox8.Text);
+                    CreateMovie(this, ev);
                     break;
                 case 2:
-                    textBox8.Text = "GRABIT";
+                    ev.str.Add(textBox9.Text);
+                    CreateCD(this, ev);
                     break;
                 case 3:
-                    textBox9.Text = "GRABIT";
+                    ev.str.Add(textBox10.Text);
+                    CreateGame(this, ev);
                     break;
             }
         }
@@ -99,4 +107,5 @@ namespace Media_Store
             cb.DataSource = list;
         }
     }
+
 }

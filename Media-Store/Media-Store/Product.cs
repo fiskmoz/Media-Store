@@ -13,7 +13,7 @@ namespace Media_Store
         public string publisher;
         public int uniqueID; 
 
-        public Product(string name, float price, string publisher, int uniqueID)
+        public Product(int uniqueID, string name, float price, string publisher)
         {
             this.name = name;
             this.price = price;
@@ -26,8 +26,8 @@ namespace Media_Store
     {
         public string author;
         public int version;
-        public Book(string name, float price, string publisher, int uniqueID, string author, int version) 
-            : base (name, price, publisher, uniqueID)
+        public Book(int uniqueID, string name, float price, string publisher, string author, int version) 
+            : base (uniqueID, name, price, publisher)
         {
             this.author = author;
             this.version = version;
@@ -38,8 +38,8 @@ namespace Media_Store
     {
         public string director;
         public string mainActor;
-        public Movie(string name, float price, string publisher, int uniqueID, string director, string mainActor)
-                : base(name, price, publisher, uniqueID)
+        public Movie(int uniqueID, string name, float price, string publisher, string director, string mainActor)
+                : base(uniqueID, name, price, publisher)
         {
             this.director = director;
             this.mainActor = mainActor;
@@ -49,8 +49,8 @@ namespace Media_Store
     class CD : Product
     {
         public string singerOrBand;
-        public CD(string name, float price, string publisher, int uniqueID, string singerOrBand)
-            : base(name, price, publisher, uniqueID)
+        public CD(int uniqueID , string name, float price, string publisher, string singerOrBand)
+            : base(uniqueID, name, price, publisher)
         {
             this.singerOrBand = singerOrBand;
         }
@@ -59,8 +59,8 @@ namespace Media_Store
     class Game : Product
     {
         public string studio;
-        public Game(string name, float price, string publisher, int uniqueID, string studio)
-            : base(name, price, publisher, uniqueID)
+        public Game(int uniqueID, string name, float price, string publisher,  string studio)
+            : base(uniqueID, name, price, publisher)
         {
             this.studio = studio;
         }
