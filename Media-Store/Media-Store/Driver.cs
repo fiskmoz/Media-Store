@@ -19,19 +19,25 @@ namespace Media_Store
             gui = new GUI();
             inventory = new Inventory();
             gui.CreateNewSetSelection(inventory.ProductSelection);
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
             SetListeners();
             Application.Run(gui);
         }
 
         private void SetListeners()
         {
-            gui.CreateBook += new EventHandler<StringListEventArgs>(inventory.CreateBook);
+            gui.CreateBook += new EventHandler<StringListEventArgs>(CreateBookEvent);
             gui.CreateMovie += new EventHandler<StringListEventArgs>(inventory.CreateMovie);
             gui.CreateCD += new EventHandler<StringListEventArgs>(inventory.CreateCD);
             gui.CreateGame += new EventHandler<StringListEventArgs>(inventory.CreateGame);
         }
-    }
 
+        private void CreateBookEvent(object obj, StringListEventArgs e)
+        {
+            inventory.CreateBook(obj, e);
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+    }
 
     public class StringListEventArgs : EventArgs
     {

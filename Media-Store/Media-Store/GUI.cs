@@ -21,10 +21,6 @@ namespace Media_Store
         public GUI()
         {
             InitializeComponent();
-            textBox7.ReadOnly = true;
-            textBox8.ReadOnly = true;
-            textBox9.ReadOnly = true;
-            textBox10.ReadOnly = true;
         }
 
         private void addProductBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,65 +28,65 @@ namespace Media_Store
             switch(addProductBox.SelectedIndex)
             {
                 case 0:
-                    textBox5.ReadOnly = false;
-                    textBox6.ReadOnly = false;
-                    textBox7.ReadOnly = true;
-                    textBox8.ReadOnly = true;
-                    textBox9.ReadOnly = true;
-                    textBox10.ReadOnly = true;
+                    label4.Text = "Author: ";
+                    label5.Text = "Version: ";
+                    textBox6.Visible = true;
                     break;
                 case 1:
-                    textBox5.ReadOnly = true;
-                    textBox6.ReadOnly = true;
-                    textBox7.ReadOnly = false;
-                    textBox8.ReadOnly = false;
-                    textBox9.ReadOnly = true;
-                    textBox10.ReadOnly = true;
+                    label4.Text = "Director: ";
+                    label5.Text = "Lead Actor: ";
+                    textBox6.Visible = true;
                     break;
                 case 2:
-                    textBox5.ReadOnly = true;
-                    textBox6.ReadOnly = true;
-                    textBox7.ReadOnly = true;
-                    textBox8.ReadOnly = true;
-                    textBox9.ReadOnly = false;
-                    textBox10.ReadOnly = true;
+                    label4.Text = "Band: ";
+                    label5.Text = "";
+                    textBox6.Visible = false;
+                    textBox6.Text = "";
                     break;
                 case 3:
-                    textBox5.ReadOnly = false;
-                    textBox6.ReadOnly = false;
-                    textBox7.ReadOnly = true;
-                    textBox8.ReadOnly = true;
-                    textBox9.ReadOnly = true;
-                    textBox10.ReadOnly = false;
+                    label4.Text = "Studio: ";
+                    label5.Text = "";
+                    textBox6.Visible = false;
+                    textBox6.Text = "";
                     break;
             }
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
+            if(!ValidateInput())
+            {
+                // DISPLAY ERROR MESSAGE
+                return;
+            }
             StringListEventArgs ev = new StringListEventArgs();
             ev.str.Add(textBox1.Text);
             ev.str.Add(textBox2.Text);
             ev.str.Add(textBox3.Text);
             ev.str.Add(textBox3.Text);
+            ev.str.Add(textBox5.Text);
             switch (addProductBox.SelectedIndex)
             {
                 case 0:
-                    ev.str.Add(textBox5.Text);
+                    try
+                    {
+                        Int32.Parse(textBox6.Text);
+                    }
+                    catch(Exception f)
+                    {
+                        return;
+                    }
                     ev.str.Add(textBox6.Text);
                     CreateBook(this, ev);
                     break;
                 case 1:
-                    ev.str.Add(textBox7.Text);
-                    ev.str.Add(textBox8.Text);
+                    ev.str.Add(textBox6.Text);
                     CreateMovie(this, ev);
                     break;
                 case 2:
-                    ev.str.Add(textBox9.Text);
                     CreateCD(this, ev);
                     break;
                 case 3:
-                    ev.str.Add(textBox10.Text);
                     CreateGame(this, ev);
                     break;
             }
@@ -103,9 +99,51 @@ namespace Media_Store
         
         internal void CreateNewSetSelection(List<Product> list)
         {
-            ComboBox cb = (ComboBox)tabControl.TabPages[1].Controls[20];
-            cb.DataSource = list;
+            addProductBox.DataSource = list;
+        }
+
+        internal void UpdateCurrentInventory(List<Product> list)
+        {
+            productListView.Items.Clear();
+            removeProductBox.Items.Clear();
+            foreach(Product pro in list)
+            {
+                productListView.Items.Add(pro.uniqueID);
+                removeProductBox.Items.Add(pro.uniqueID);
+            }
+        }
+
+        internal void UpdateSuccessLabel(bool result)
+        {
+            if(result)
+            {
+                // DISPLAY SUCCESS
+                return;
+            }
+            // DISPLAY FAILURE
+            return;
+        }
+        
+        private bool ValidateInput()
+        {
+            var text = textBox1.Text; 
+            foreach(string entry in productListView.Items)
+            {
+                if(entry == text)
+                {
+                    return false;
+                }
+            }
+            var price = textBox3.Text;
+            try
+            {
+                float.Parse(price);
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            return true;
         }
     }
-
 }
