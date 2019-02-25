@@ -27,15 +27,44 @@ namespace Media_Store
         private void SetListeners()
         {
             gui.CreateBook += new EventHandler<StringListEventArgs>(CreateBookEvent);
-            gui.CreateMovie += new EventHandler<StringListEventArgs>(inventory.CreateMovie);
-            gui.CreateCD += new EventHandler<StringListEventArgs>(inventory.CreateCD);
-            gui.CreateGame += new EventHandler<StringListEventArgs>(inventory.CreateGame);
+            gui.CreateMovie += new EventHandler<StringListEventArgs>(CreateMovieEvent);
+            gui.CreateCD += new EventHandler<StringListEventArgs>(CreateCDEvent);
+            gui.CreateGame += new EventHandler<StringListEventArgs>(CreateGameEvent);
+            gui.RemoveProduct += new EventHandler<StringListEventArgs>(RemoveProductEvent);
+            gui.OrderMoreProducts += new EventHandler<StringListEventArgs>(OrderMoreProductsEvent);
         }
 
         private void CreateBookEvent(object obj, StringListEventArgs e)
         {
-            inventory.CreateBook(obj, e);
+            inventory.CreateBook(e.str);
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+        private void CreateMovieEvent(object obj, StringListEventArgs e)
+        {
+            inventory.CreateMovie(e.str);
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+        private void CreateCDEvent(object obj, StringListEventArgs e)
+        {
+            inventory.CreateCD(e.str);
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+
+        private void CreateGameEvent(object obj, StringListEventArgs e)
+        {
+            inventory.CreateGame(e.str);
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+        
+        private void RemoveProductEvent(object obj, StringListEventArgs e)
+        {
+            inventory.RemoveProduct(e.str);
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+
+        private void OrderMoreProductsEvent(object obj, StringListEventArgs e)
+        {
+               
         }
     }
 

@@ -28,25 +28,36 @@ namespace Media_Store
             ProductSelection.Add(new Game("4", "Default", 0, "Default", 0, "Default"));
         }
 
-        internal void CreateBook(object obj, StringListEventArgs e)
+        internal void CreateBook(List<string> str)
         {
-            CurrentProducts.Add(new Book(e.str[0], e.str[1], float.Parse(e.str[2]), e.str[3], 0 , e.str[4], Int32.Parse(e.str[5])));
+            CurrentProducts.Add(new Book(str[0], str[1], float.Parse(str[2]), str[3], 0 , str[4], Int32.Parse(str[5])));
             fileManager.WriteToFile(CurrentProducts);
         }
-        internal void CreateMovie(object obj, StringListEventArgs e)
+        internal void CreateMovie(List<string> str)
         {
-            CurrentProducts.Add(new Movie(e.str[0], e.str[1], float.Parse(e.str[2]), e.str[3], 0, e.str[4], e.str[5]));
+            CurrentProducts.Add(new Movie(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4], str[5]));
             fileManager.WriteToFile(CurrentProducts);
         }
-        internal void CreateCD(object obj, StringListEventArgs e)
+        internal void CreateCD(List<string> str)
         {
-            CurrentProducts.Add(new CD(e.str[0], e.str[1], float.Parse(e.str[2]), e.str[3], 0, e.str[4]));
+            CurrentProducts.Add(new CD(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4]));
             fileManager.WriteToFile(CurrentProducts);
         }
-        internal void CreateGame(object obj, StringListEventArgs e)
+        internal void CreateGame(List<string> str)
         {
-            CurrentProducts.Add(new CD(e.str[0], e.str[1], float.Parse(e.str[2]), e.str[3], 0, e.str[4]));
+            CurrentProducts.Add(new CD(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4]));
             fileManager.WriteToFile(CurrentProducts);
+        }
+        internal void RemoveProduct(List<string> str)
+        {
+            foreach(var prod in CurrentProducts)
+            {
+                if(prod.uniqueID == str[0])
+                {
+                    CurrentProducts.Remove(prod);
+                    return;
+                }
+            }
         }
     }
 }

@@ -16,7 +16,8 @@ namespace Media_Store
         public event EventHandler<StringListEventArgs> CreateMovie;
         public event EventHandler<StringListEventArgs> CreateCD;
         public event EventHandler<StringListEventArgs> CreateGame;
-        public event EventHandler<StringListEventArgs> alertStore;
+        public event EventHandler<StringListEventArgs> RemoveProduct;
+        public event EventHandler<StringListEventArgs> OrderMoreProducts;
 
         public GUI()
         {
@@ -89,14 +90,25 @@ namespace Media_Store
                 case 3:
                     CreateGame(this, ev);
                     break;
-            }
+            }   
         }
 
         private void removeProductButton_Click(object sender, EventArgs e)
         {
-
+            var args = new StringListEventArgs();
+            args.str.Add((string)removeProductBox.SelectedItem);
+            RemoveProduct(this, args);
         }
-        
+
+
+        private void orderMoreButton_Click(object sender, EventArgs e)
+        {
+            var args = new StringListEventArgs();
+            args.str.Add((string)orderMoreComboBox.SelectedItem);
+            args.str.Add((string)orderMoreTextBox.Text);
+            OrderMoreProducts(this, args);
+        }
+
         internal void CreateNewSetSelection(List<Product> list)
         {
             addProductBox.DataSource = list;
@@ -127,9 +139,9 @@ namespace Media_Store
         private bool ValidateInput()
         {
             var text = textBox1.Text; 
-            foreach(string entry in productListView.Items)
+            foreach(var entry in productListView.Items)
             {
-                if(entry == text)
+                if(entry.ToString() == text)
                 {
                     return false;
                 }

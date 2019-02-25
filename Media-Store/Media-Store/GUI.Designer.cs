@@ -31,6 +31,8 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.StockGUI = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.productListView = new System.Windows.Forms.ListView();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -50,8 +52,9 @@
             this.headerLabel = new System.Windows.Forms.Label();
             this.removeProductButton = new System.Windows.Forms.Button();
             this.addProductButton = new System.Windows.Forms.Button();
-            this.productListView = new System.Windows.Forms.ListView();
-            this.label6 = new System.Windows.Forms.Label();
+            this.orderMoreComboBox = new System.Windows.Forms.ComboBox();
+            this.orderMoreTextBox = new System.Windows.Forms.TextBox();
+            this.orderMoreButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.StockGUI.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +81,9 @@
             // 
             // StockGUI
             // 
+            this.StockGUI.Controls.Add(this.orderMoreButton);
+            this.StockGUI.Controls.Add(this.orderMoreTextBox);
+            this.StockGUI.Controls.Add(this.orderMoreComboBox);
             this.StockGUI.Controls.Add(this.label6);
             this.StockGUI.Controls.Add(this.productListView);
             this.StockGUI.Controls.Add(this.label12);
@@ -107,15 +113,33 @@
             this.StockGUI.Text = "Stock";
             this.StockGUI.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(217, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(232, 20);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Order more copies of  a product";
+            // 
+            // productListView
+            // 
+            this.productListView.Location = new System.Drawing.Point(487, 72);
+            this.productListView.Name = "productListView";
+            this.productListView.Size = new System.Drawing.Size(262, 108);
+            this.productListView.TabIndex = 30;
+            this.productListView.UseCompatibleStateImageBehavior = false;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(483, 17);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(175, 20);
+            this.label12.Size = new System.Drawing.Size(193, 20);
             this.label12.TabIndex = 29;
-            this.label12.Text = "List all avalible products";
+            this.label12.Text = "List of all avalible products";
             // 
             // label11
             // 
@@ -270,23 +294,30 @@
             this.addProductButton.UseVisualStyleBackColor = true;
             this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
-            // productListView
+            // orderMoreComboBox
             // 
-            this.productListView.Location = new System.Drawing.Point(487, 72);
-            this.productListView.Name = "productListView";
-            this.productListView.Size = new System.Drawing.Size(262, 108);
-            this.productListView.TabIndex = 30;
-            this.productListView.UseCompatibleStateImageBehavior = false;
+            this.orderMoreComboBox.FormattingEnabled = true;
+            this.orderMoreComboBox.Location = new System.Drawing.Point(221, 72);
+            this.orderMoreComboBox.Name = "orderMoreComboBox";
+            this.orderMoreComboBox.Size = new System.Drawing.Size(121, 21);
+            this.orderMoreComboBox.TabIndex = 32;
             // 
-            // label6
+            // orderMoreTextBox
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(217, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(232, 20);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Order more copies of  a product";
+            this.orderMoreTextBox.Location = new System.Drawing.Point(221, 110);
+            this.orderMoreTextBox.Name = "orderMoreTextBox";
+            this.orderMoreTextBox.Size = new System.Drawing.Size(100, 20);
+            this.orderMoreTextBox.TabIndex = 33;
+            // 
+            // orderMoreButton
+            // 
+            this.orderMoreButton.Location = new System.Drawing.Point(224, 150);
+            this.orderMoreButton.Name = "orderMoreButton";
+            this.orderMoreButton.Size = new System.Drawing.Size(107, 39);
+            this.orderMoreButton.TabIndex = 34;
+            this.orderMoreButton.Text = "Order more copies";
+            this.orderMoreButton.UseVisualStyleBackColor = true;
+            this.orderMoreButton.Click += new System.EventHandler(this.orderMoreButton_Click);
             // 
             // GUI
             // 
@@ -329,6 +360,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListView productListView;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button orderMoreButton;
+        private System.Windows.Forms.TextBox orderMoreTextBox;
+        private System.Windows.Forms.ComboBox orderMoreComboBox;
     }
 }
 
