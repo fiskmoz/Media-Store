@@ -13,6 +13,7 @@ namespace Media_Store
         public List<Product> CurrentProducts;
 
         private FileManager fileManager;
+        private Validator validator;
         
         public Inventory()
         {
@@ -20,6 +21,8 @@ namespace Media_Store
             CurrentProducts = new List<Product>();
 
             fileManager = new FileManager();
+            validator = new Validator();
+
             CurrentProducts = fileManager.ReadFromFile(CurrentProducts);
 
             ProductSelection.Add(new Book("1", "Default", 0, "Default", 0, "Default", 0));
@@ -28,36 +31,62 @@ namespace Media_Store
             ProductSelection.Add(new Game("4", "Default", 0, "Default", 0, "Default"));
         }
 
-        internal void CreateBook(List<string> str)
+        internal int CreateProduct(string type, List<string> str)
         {
-            CurrentProducts.Add(new Book(str[0], str[1], float.Parse(str[2]), str[3], 0 , str[4], Int32.Parse(str[5])));
+            int code = validator.CreateValidation(str, CurrentProducts);
+            if (code != 10)
+                return code;
+            switch (type)
+            {
+                case "Book":
+                    if (!validator.IntParsing(str[5]))
+                        return 5;
+                    CurrentProducts.Add(new Book(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4], Int32.Parse(str[5])));
+                    break;
+                case "Movie":
+                    CurrentProducts.Add(new Movie(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4], str[5]));
+                    break;
+                case "CD":
+                    CurrentProducts.Add(new CD(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4]));
+                    break;
+                case "Game":
+                    CurrentProducts.Add(new Game(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4]));
+                    break;
+            }
             fileManager.WriteToFile(CurrentProducts);
+            return 10;
         }
-        internal void CreateMovie(List<string> str)
-        {
-            CurrentProducts.Add(new Movie(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4], str[5]));
-            fileManager.WriteToFile(CurrentProducts);
-        }
-        internal void CreateCD(List<string> str)
-        {
-            CurrentProducts.Add(new CD(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4]));
-            fileManager.WriteToFile(CurrentProducts);
-        }
-        internal void CreateGame(List<string> str)
-        {
-            CurrentProducts.Add(new CD(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4]));
-            fileManager.WriteToFile(CurrentProducts);
-        }
-        internal void RemoveProduct(List<string> str)
+
+        internal int RemoveProduct(List<string> str)
         {
             foreach(var prod in CurrentProducts)
             {
                 if(prod.uniqueID == str[0])
                 {
                     CurrentProducts.Remove(prod);
-                    return;
+                    fileManager.WriteToFile(CurrentProducts);
+                    return 10;
                 }
             }
+            return 6;
         }
+
+        internal int OrderMoreProducts(List<string> str)
+        {
+            if(!validator.IntParsing(str[1]))
+                return 7;
+
+            foreach(var prod in CurrentProducts)
+            {
+                if(prod.uniqueID == str[0])
+                {
+                    prod.copies += Int32.Parse(str[1]);
+                    fileManager.WriteToFile(CurrentProducts);
+                    return 10;
+                }
+            }
+            return 8;
+        }
+
     }
 }

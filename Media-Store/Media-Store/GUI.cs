@@ -35,7 +35,7 @@ namespace Media_Store
                     break;
                 case 1:
                     label4.Text = "Director: ";
-                    label5.Text = "Lead Actor: ";
+                    label5.Text = "Actor: ";
                     textBox6.Visible = true;
                     break;
                 case 2:
@@ -55,28 +55,15 @@ namespace Media_Store
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-            if(!ValidateInput())
-            {
-                // DISPLAY ERROR MESSAGE
-                return;
-            }
             StringListEventArgs ev = new StringListEventArgs();
             ev.str.Add(textBox1.Text);
             ev.str.Add(textBox2.Text);
             ev.str.Add(textBox3.Text);
-            ev.str.Add(textBox3.Text);
+            ev.str.Add(textBox4.Text);
             ev.str.Add(textBox5.Text);
             switch (addProductBox.SelectedIndex)
             {
                 case 0:
-                    try
-                    {
-                        Int32.Parse(textBox6.Text);
-                    }
-                    catch(Exception f)
-                    {
-                        return;
-                    }
                     ev.str.Add(textBox6.Text);
                     CreateBook(this, ev);
                     break;
@@ -118,44 +105,79 @@ namespace Media_Store
         {
             productListView.Items.Clear();
             removeProductBox.Items.Clear();
-            foreach(Product pro in list)
+            orderMoreComboBox.Items.Clear();
+            foreach (Product pro in list)
             {
-                productListView.Items.Add(pro.uniqueID);
+                productListView.Items.Add(pro.GetType().ToString().Replace("Media_Store.", "") + ":  " + pro.uniqueID + "         Copies: " + pro.copies.ToString());
                 removeProductBox.Items.Add(pro.uniqueID);
+                orderMoreComboBox.Items.Add(pro.uniqueID);
             }
         }
 
-        internal void UpdateSuccessLabel(bool result)
+        internal void UpdateSuccessLabel(int errorCode)
         {
-            if(result)
+            label1.ForeColor = Color.Black;
+            label2.ForeColor = Color.Black;
+            label3.ForeColor = Color.Black;
+            label4.ForeColor = Color.Black;
+            label5.ForeColor = Color.Black;
+            label6.ForeColor = Color.Black;
+            label7.ForeColor = Color.Black;
+            label10.ForeColor = Color.Black;
+            label11.ForeColor = Color.Black;
+            switch (errorCode)
             {
-                // DISPLAY SUCCESS
-                return;
+                case 0:
+                    statusLabel.Text = "Status: Invalid identifier";
+                    statusLabel.ForeColor = Color.Red;
+                    label10.ForeColor = Color.Red;
+                    break;
+                case 1:
+                    statusLabel.Text = "Status: Invalid name";
+                    statusLabel.ForeColor = Color.Red;
+                    label1.ForeColor = Color.Red;
+                    break;
+                case 2:
+                    statusLabel.Text = "Status: Invalid price";
+                    statusLabel.ForeColor = Color.Red;
+                    label2.ForeColor = Color.Red;
+                    break;
+                case 3:
+                    statusLabel.Text = "Status: Invalid publisher";
+                    statusLabel.ForeColor = Color.Red;
+                    label3.ForeColor = Color.Red;
+                    break;
+                case 4:
+                    statusLabel.Text = "Status: Invalid author/director/band/studio";
+                    statusLabel.ForeColor = Color.Red;
+                    label4.ForeColor = Color.Red;
+                    break;
+                case 5:
+                    statusLabel.Text = "Status: Invalid actor/version";
+                    statusLabel.ForeColor = Color.Red;
+                    label5.ForeColor = Color.Red;
+                    break;
+                case 6:
+                    statusLabel.Text = "Status: Invalid target";
+                    statusLabel.ForeColor = Color.Red;
+                    label11.ForeColor = Color.Red;
+                    break;
+                case 7:
+                    statusLabel.Text = "Status: Invalid number of copies";
+                    statusLabel.ForeColor = Color.Red;
+                    label7.ForeColor = Color.Red;
+                    break;
+                case 8:
+                    statusLabel.Text = "Status: Invalid target";
+                    statusLabel.ForeColor = Color.Red;
+                    label6.ForeColor = Color.Red;
+                    break;
+                case 10:
+                    statusLabel.Text = "Status: OK";
+                    statusLabel.ForeColor = Color.Green;
+                    break;
             }
-            // DISPLAY FAILURE
             return;
-        }
-        
-        private bool ValidateInput()
-        {
-            var text = textBox1.Text; 
-            foreach(var entry in productListView.Items)
-            {
-                if(entry.ToString() == text)
-                {
-                    return false;
-                }
-            }
-            var price = textBox3.Text;
-            try
-            {
-                float.Parse(price);
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

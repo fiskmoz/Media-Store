@@ -36,35 +36,36 @@ namespace Media_Store
 
         private void CreateBookEvent(object obj, StringListEventArgs e)
         {
-            inventory.CreateBook(e.str);
+            gui.UpdateSuccessLabel(inventory.CreateProduct("Book", e.str));
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
         private void CreateMovieEvent(object obj, StringListEventArgs e)
         {
-            inventory.CreateMovie(e.str);
+            gui.UpdateSuccessLabel(inventory.CreateProduct("Movie",e.str));
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
         private void CreateCDEvent(object obj, StringListEventArgs e)
         {
-            inventory.CreateCD(e.str);
+            gui.UpdateSuccessLabel(inventory.CreateProduct("CD", e.str));
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
 
         private void CreateGameEvent(object obj, StringListEventArgs e)
         {
-            inventory.CreateGame(e.str);
+            gui.UpdateSuccessLabel(inventory.CreateProduct("Game", e.str));
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
         
         private void RemoveProductEvent(object obj, StringListEventArgs e)
         {
-            inventory.RemoveProduct(e.str);
+            gui.UpdateSuccessLabel(inventory.RemoveProduct(e.str));
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
 
         private void OrderMoreProductsEvent(object obj, StringListEventArgs e)
         {
-               
+            gui.UpdateSuccessLabel(inventory.OrderMoreProducts(e.str));
+            gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
     }
 
