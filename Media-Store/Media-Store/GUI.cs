@@ -29,23 +29,23 @@ namespace Media_Store
             switch(addProductBox.SelectedIndex)
             {
                 case 0:
-                    label4.Text = "Author: ";
-                    label5.Text = "Version: ";
+                    label4.Text = "Book author: ";
+                    label5.Text = "Book version: ";
                     textBox6.Visible = true;
                     break;
                 case 1:
-                    label4.Text = "Director: ";
-                    label5.Text = "Actor: ";
+                    label4.Text = "Movie director: ";
+                    label5.Text = "Lead actor: ";
                     textBox6.Visible = true;
                     break;
                 case 2:
-                    label4.Text = "Band: ";
+                    label4.Text = "Band or singer: ";
                     label5.Text = "";
                     textBox6.Visible = false;
                     textBox6.Text = "";
                     break;
                 case 3:
-                    label4.Text = "Studio: ";
+                    label4.Text = "Game studio: ";
                     label5.Text = "";
                     textBox6.Visible = false;
                     textBox6.Text = "";
@@ -87,7 +87,6 @@ namespace Media_Store
             RemoveProduct(this, args);
         }
 
-
         private void orderMoreButton_Click(object sender, EventArgs e)
         {
             var args = new StringListEventArgs();
@@ -98,7 +97,29 @@ namespace Media_Store
 
         internal void CreateNewSetSelection(List<Product> list)
         {
-            addProductBox.DataSource = list;
+            foreach(var elem in list)
+            {
+                addProductBox.Items.Add(elem.GetType().ToString().Replace("Media_Store.", ""));
+            }
+            addProductBox.SelectedIndex = 0;
+        }
+
+        internal bool DisplayTextBox()
+        {
+            string messageBoxText = "You still have copies of this product, do you still want to delete? ";
+            string caption = "Remove product alert";
+            MessageBoxButtons button = MessageBoxButtons.YesNoCancel;
+            MessageBoxIcon icon = MessageBoxIcon.Warning;
+            DialogResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    return true;
+                case DialogResult.No:
+                case DialogResult.Cancel:
+                    return false;
+            }
+            return false;
         }
 
         internal void UpdateCurrentInventory(List<Product> list)
@@ -106,15 +127,18 @@ namespace Media_Store
             productListView.Items.Clear();
             removeProductBox.Items.Clear();
             orderMoreComboBox.Items.Clear();
+            productListView.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", "Type", "ID", "Copies"));
             foreach (Product pro in list)
             {
-                productListView.Items.Add(pro.GetType().ToString().Replace("Media_Store.", "") + ":  " + pro.uniqueID + "         Copies: " + pro.copies.ToString());
+                productListView.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", pro.GetType().ToString().Replace("Media_Store.", ""), pro.uniqueID, pro.copies.ToString()));
                 removeProductBox.Items.Add(pro.uniqueID);
                 orderMoreComboBox.Items.Add(pro.uniqueID);
             }
+            removeProductBox.SelectedIndex = 0;
+            orderMoreComboBox.SelectedIndex = 0;
         }
 
-        internal void UpdateSuccessLabel(int errorCode)
+        internal bool UpdateSuccessLabel(int errorCode)
         {
             label1.ForeColor = Color.Black;
             label2.ForeColor = Color.Black;
@@ -173,11 +197,11 @@ namespace Media_Store
                     label6.ForeColor = Color.Red;
                     break;
                 case 10:
-                    statusLabel.Text = "Status: OK";
+                    statusLabel.Text = "Status: Operation Successfull";
                     statusLabel.ForeColor = Color.Green;
-                    break;
+                    return true;
             }
-            return;
+            return false;
         }
     }
 }

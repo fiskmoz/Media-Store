@@ -36,36 +36,39 @@ namespace Media_Store
 
         private void CreateBookEvent(object obj, StringListEventArgs e)
         {
-            gui.UpdateSuccessLabel(inventory.CreateProduct("Book", e.str));
-            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if(gui.UpdateSuccessLabel(inventory.CreateProduct("Book", e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
         private void CreateMovieEvent(object obj, StringListEventArgs e)
         {
-            gui.UpdateSuccessLabel(inventory.CreateProduct("Movie",e.str));
-            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if(gui.UpdateSuccessLabel(inventory.CreateProduct("Movie",e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
         private void CreateCDEvent(object obj, StringListEventArgs e)
         {
-            gui.UpdateSuccessLabel(inventory.CreateProduct("CD", e.str));
-            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if(gui.UpdateSuccessLabel(inventory.CreateProduct("CD", e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
 
         private void CreateGameEvent(object obj, StringListEventArgs e)
         {
-            gui.UpdateSuccessLabel(inventory.CreateProduct("Game", e.str));
-            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if(gui.UpdateSuccessLabel(inventory.CreateProduct("Game", e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
         
         private void RemoveProductEvent(object obj, StringListEventArgs e)
         {
-            gui.UpdateSuccessLabel(inventory.RemoveProduct(e.str));
-            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if (inventory.GetCopies(e.str[0]) > 0)
+                if (!gui.DisplayTextBox())
+                    return;
+            if(gui.UpdateSuccessLabel(inventory.RemoveProduct(e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
 
         private void OrderMoreProductsEvent(object obj, StringListEventArgs e)
         {
-            gui.UpdateSuccessLabel(inventory.OrderMoreProducts(e.str));
-            gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if(gui.UpdateSuccessLabel(inventory.OrderMoreProducts(e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
     }
 

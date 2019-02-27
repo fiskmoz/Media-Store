@@ -71,6 +71,16 @@ namespace Media_Store
             return 6;
         }
 
+        internal int GetCopies(string ID)
+        {
+            foreach(var prod in CurrentProducts)
+            {
+                if (prod.uniqueID == ID)
+                    return prod.copies;
+            }
+            return 0;
+        }
+
         internal int OrderMoreProducts(List<string> str)
         {
             if(!validator.IntParsing(str[1]))
