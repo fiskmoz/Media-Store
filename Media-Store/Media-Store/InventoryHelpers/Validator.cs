@@ -16,20 +16,20 @@ namespace Media_Store
         internal int CreateValidation(List<string> toValidate, List<Product> comparision)
         {
             if (!CheckDuplicates(comparision, toValidate[0]))
-                return 0;
+                return ErrorCodes.INVALID_IDENTIFER;
             if (!CheckInputsize(toValidate[0]))
-                return 0;
+                return ErrorCodes.INVALID_IDENTIFER;
             if (!CheckInputsize(toValidate[1]))
-                return 1;
+                return ErrorCodes.INVALID_NAME;
             if (!IntParsing(toValidate[2]))
-                return 2;
+                return ErrorCodes.INVALID_PRICE;
             if (Int32.Parse(toValidate[2]) > Int32.MaxValue || Int32.Parse(toValidate[2]) < 0)
-                return 2;
+                return ErrorCodes.INVALID_PRICE;
             if (!CheckInputsize(toValidate[3]))
-                return 3;
+                return ErrorCodes.INVALID_PUBLISHER;
             if (!CheckInputsize(toValidate[4]))
-                return 4;
-            return 10;
+                return ErrorCodes.INVALID_ENTRY5;
+            return ErrorCodes.SUCCESS;
         }
 
         private bool CheckDuplicates(List<Product> products, string ID)
@@ -48,6 +48,14 @@ namespace Media_Store
         {
             if (str.Length > 20 || str.Length < 2)
                 return false;
+            return true;
+        }
+        internal bool withinRange(int i)
+        {
+            if(i<0 || i > 999)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -76,5 +84,6 @@ namespace Media_Store
             }
             return true;
         }
+
     }
 }

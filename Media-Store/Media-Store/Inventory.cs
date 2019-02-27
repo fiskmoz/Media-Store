@@ -34,13 +34,13 @@ namespace Media_Store
         internal int CreateProduct(string type, List<string> str)
         {
             int code = validator.CreateValidation(str, CurrentProducts);
-            if (code != 10)
+            if (code != ErrorCodes.SUCCESS)
                 return code;
             switch (type)
             {
                 case "Book":
                     if (!validator.IntParsing(str[5]))
-                        return 5;
+                        return ErrorCodes.INVALID_ENTRY6;
                     CurrentProducts.Add(new Book(str[0], str[1], float.Parse(str[2]), str[3], 0, str[4], Int32.Parse(str[5])));
                     break;
                 case "Movie":
@@ -54,7 +54,7 @@ namespace Media_Store
                     break;
             }
             fileManager.WriteToFile(CurrentProducts);
-            return 10;
+            return ErrorCodes.SUCCESS;
         }
 
         internal int RemoveProduct(List<string> str)
@@ -65,38 +65,60 @@ namespace Media_Store
                 {
                     CurrentProducts.Remove(prod);
                     fileManager.WriteToFile(CurrentProducts);
-                    return 10;
+                    return ErrorCodes.SUCCESS;
                 }
             }
-            return 6;
+            return ErrorCodes.INVALID_REMOVE_TARGET;
+        }
+
+        internal int OrderMoreProducts(List<string> str)
+        {
+            if(!validator.IntParsing(str[1]))
+                return ErrorCodes.INVALID_ADD_COPIES;
+            if (!validator.withinRange(Int32.Parse(str[1])))
+                return ErrorCodes.INVALID_OUTOFRANGE;
+
+            foreach (var prod in CurrentProducts)
+            {
+                if(prod.uniqueID == str[0])
+                {
+                    prod.copies += Int32.Parse(str[1]);
+                    fileManager.WriteToFile(CurrentProducts);
+                    return ErrorCodes.SUCCESS;
+                }
+            }
+            return ErrorCodes.INVALID_ADD_TARGET;
+        }
+
+        internal int BuyProduct(List<string> str)
+        {
+            if (!validator.IntParsing(str[1]))
+                return ErrorCodes.INVALID_BUY_COPIES;
+            if (!validator.withinRange(Int32.Parse(str[1])))
+                return ErrorCodes.INVALID_OUTOFRANGE;
+
+            foreach (var prod in CurrentProducts)
+            {
+                if (prod.uniqueID == str[0])
+                {
+                    if (prod.copies - Int32.Parse(str[1]) < 0)
+                        return ErrorCodes.INVALID_PRODUCT_BELOW_ZERO;
+                    prod.copies -= Int32.Parse(str[1]);
+                    fileManager.WriteToFile(CurrentProducts);
+                    return ErrorCodes.SUCCESS;
+                }
+            }
+            return ErrorCodes.INVALID_BUY_TARGET;
         }
 
         internal int GetCopies(string ID)
         {
-            foreach(var prod in CurrentProducts)
+            foreach (var prod in CurrentProducts)
             {
                 if (prod.uniqueID == ID)
                     return prod.copies;
             }
             return 0;
         }
-
-        internal int OrderMoreProducts(List<string> str)
-        {
-            if(!validator.IntParsing(str[1]))
-                return 7;
-
-            foreach(var prod in CurrentProducts)
-            {
-                if(prod.uniqueID == str[0])
-                {
-                    prod.copies += Int32.Parse(str[1]);
-                    fileManager.WriteToFile(CurrentProducts);
-                    return 10;
-                }
-            }
-            return 8;
-        }
-
     }
 }

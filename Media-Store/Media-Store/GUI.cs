@@ -18,6 +18,7 @@ namespace Media_Store
         public event EventHandler<StringListEventArgs> CreateGame;
         public event EventHandler<StringListEventArgs> RemoveProduct;
         public event EventHandler<StringListEventArgs> OrderMoreProducts;
+        public event EventHandler<StringListEventArgs> BuyProduct;
 
         public GUI()
         {
@@ -95,6 +96,14 @@ namespace Media_Store
             OrderMoreProducts(this, args);
         }
 
+        private void purchaseButton_Click(object sender, EventArgs e)
+        {
+            var args = new StringListEventArgs();
+            args.str.Add((string)buyProductComboBox.SelectedItem);
+            args.str.Add((string)copiesToBuyTextBox.Text);
+            BuyProduct(this, args);
+        }
+
         internal void CreateNewSetSelection(List<Product> list)
         {
             foreach(var elem in list)
@@ -125,17 +134,23 @@ namespace Media_Store
         internal void UpdateCurrentInventory(List<Product> list)
         {
             productListView.Items.Clear();
+            productListViewStoreTab.Items.Clear();
             removeProductBox.Items.Clear();
             orderMoreComboBox.Items.Clear();
+            buyProductComboBox.Items.Clear();
             productListView.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", "Type", "ID", "Copies"));
+            productListViewStoreTab.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", "Type", "ID", "Copies"));
             foreach (Product pro in list)
             {
                 productListView.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", pro.GetType().ToString().Replace("Media_Store.", ""), pro.uniqueID, pro.copies.ToString()));
+                productListViewStoreTab.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", pro.GetType().ToString().Replace("Media_Store.", ""), pro.uniqueID, pro.copies.ToString()));
                 removeProductBox.Items.Add(pro.uniqueID);
                 orderMoreComboBox.Items.Add(pro.uniqueID);
+                buyProductComboBox.Items.Add(pro.uniqueID);
             }
             removeProductBox.SelectedIndex = 0;
             orderMoreComboBox.SelectedIndex = 0;
+            buyProductComboBox.SelectedIndex = 0;
         }
 
         internal bool UpdateSuccessLabel(int errorCode)
@@ -149,56 +164,80 @@ namespace Media_Store
             label7.ForeColor = Color.Black;
             label10.ForeColor = Color.Black;
             label11.ForeColor = Color.Black;
+            label20.ForeColor = Color.Black;
+            label21.ForeColor = Color.Black;
             switch (errorCode)
             {
-                case 0:
+                case ErrorCodes.INVALID_IDENTIFER:
                     statusLabel.Text = "Status: Invalid identifier";
                     statusLabel.ForeColor = Color.Red;
                     label10.ForeColor = Color.Red;
                     break;
-                case 1:
+                case ErrorCodes.INVALID_NAME:
                     statusLabel.Text = "Status: Invalid name";
                     statusLabel.ForeColor = Color.Red;
                     label1.ForeColor = Color.Red;
                     break;
-                case 2:
+                case ErrorCodes.INVALID_PRICE:
                     statusLabel.Text = "Status: Invalid price";
                     statusLabel.ForeColor = Color.Red;
                     label2.ForeColor = Color.Red;
                     break;
-                case 3:
+                case ErrorCodes.INVALID_PUBLISHER:
                     statusLabel.Text = "Status: Invalid publisher";
                     statusLabel.ForeColor = Color.Red;
                     label3.ForeColor = Color.Red;
                     break;
-                case 4:
+                case ErrorCodes.INVALID_ENTRY5:
                     statusLabel.Text = "Status: Invalid author/director/band/studio";
                     statusLabel.ForeColor = Color.Red;
                     label4.ForeColor = Color.Red;
                     break;
-                case 5:
+                case ErrorCodes.INVALID_ENTRY6:
                     statusLabel.Text = "Status: Invalid actor/version";
                     statusLabel.ForeColor = Color.Red;
                     label5.ForeColor = Color.Red;
                     break;
-                case 6:
+                case ErrorCodes.INVALID_REMOVE_TARGET:
                     statusLabel.Text = "Status: Invalid target";
                     statusLabel.ForeColor = Color.Red;
                     label11.ForeColor = Color.Red;
                     break;
-                case 7:
+                case ErrorCodes.INVALID_ADD_COPIES:
                     statusLabel.Text = "Status: Invalid number of copies";
                     statusLabel.ForeColor = Color.Red;
                     label7.ForeColor = Color.Red;
                     break;
-                case 8:
+                case ErrorCodes.INVALID_ADD_TARGET:
                     statusLabel.Text = "Status: Invalid target";
                     statusLabel.ForeColor = Color.Red;
                     label6.ForeColor = Color.Red;
                     break;
-                case 10:
+                case ErrorCodes.INVALID_BUY_COPIES:
+                    statusLabelStore.Text = "Status: Invalid number of copies";
+                    statusLabelStore.ForeColor = Color.Red;
+                    label21.ForeColor = Color.Red;
+                    break;
+                case ErrorCodes.INVALID_BUY_TARGET:
+                    statusLabelStore.Text = "Status: Invalid target";
+                    statusLabelStore.ForeColor = Color.Red;
+                    label20.ForeColor = Color.Red;
+                    break;
+                case ErrorCodes.INVALID_PRODUCT_BELOW_ZERO:
+                    statusLabelStore.Text = "Status: No more copies of this product";
+                    statusLabelStore.ForeColor = Color.Red;
+                    break;
+                case ErrorCodes.INVALID_OUTOFRANGE:
+                    statusLabel.Text = "Status: Only purchases between 0-999 is allowed.";
+                    statusLabel.ForeColor = Color.Red;
+                    statusLabelStore.Text = "Status: Only purchases between 0-999 is allowed.";
+                    statusLabelStore.ForeColor = Color.Red;
+                    break;
+                case ErrorCodes.SUCCESS:
                     statusLabel.Text = "Status: Operation Successfull";
                     statusLabel.ForeColor = Color.Green;
+                    statusLabelStore.Text = "Status: Operation Successfull";
+                    statusLabelStore.ForeColor = Color.Green;
                     return true;
             }
             return false;

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Driver.cs" />
+    <Compile Include="ErrorCodes.cs" />
     <Compile Include="InventoryHelpers\FileManager.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>

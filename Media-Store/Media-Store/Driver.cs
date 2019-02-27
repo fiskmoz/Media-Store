@@ -32,6 +32,7 @@ namespace Media_Store
             gui.CreateGame += new EventHandler<StringListEventArgs>(CreateGameEvent);
             gui.RemoveProduct += new EventHandler<StringListEventArgs>(RemoveProductEvent);
             gui.OrderMoreProducts += new EventHandler<StringListEventArgs>(OrderMoreProductsEvent);
+            gui.BuyProduct += new EventHandler<StringListEventArgs>(BuyProducts);
         }
 
         private void CreateBookEvent(object obj, StringListEventArgs e)
@@ -68,6 +69,12 @@ namespace Media_Store
         private void OrderMoreProductsEvent(object obj, StringListEventArgs e)
         {
             if(gui.UpdateSuccessLabel(inventory.OrderMoreProducts(e.str)))
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
+        }
+
+        private void BuyProducts(object obj, StringListEventArgs e)
+        {
+            if (gui.UpdateSuccessLabel(inventory.BuyProduct(e.str)))
                 gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
     }
