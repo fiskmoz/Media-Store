@@ -18,19 +18,40 @@ namespace Media_Store
 
         internal List<Product> ReadFromFile(List<Product> list)
         {
-            using (Stream stream = File.Open(serializationFile, FileMode.Open))
+            try
             {
-                var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                try
+                using (Stream stream = File.Open(serializationFile, FileMode.Open))
                 {
-                    list = (List<Product>)bformatter.Deserialize(stream);
-                }
-                catch (Exception e)
-                {
+                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    try
+                    {
+                        list = (List<Product>)bformatter.Deserialize(stream);
+                    }
+                    catch (Exception e)
+                    {
 
+                    }
+                    return list;
                 }
             }
-            return list;
+            catch(Exception e)
+            {
+                using (Stream stream = File.Open(serializationFile, FileMode.Create))
+                {
+                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    try
+                    {
+                        list = (List<Product>)bformatter.Deserialize(stream);
+                    }
+                    catch (Exception g)
+                    {
+
+                    }
+                    return list;
+                }
+            }
+
+            
         }
 
         internal void WriteToFile(List<Product> list)

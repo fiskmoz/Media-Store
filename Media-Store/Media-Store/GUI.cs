@@ -113,10 +113,13 @@ namespace Media_Store
         {
             var args = new StringListEventArgs();
             args.str.Add((string)buyProductComboBox.SelectedItem);
-            args.str.Add((string)copiesToBuyTextBox.Text - );
+            var totalPrice = 0;
+            foreach (var price in order.ToBuy)
+                totalPrice += price;
+            args.str.Add(copiesToBuyTextBox.Text);
+            args.str.Add(totalPrice.ToString());
             BuyProductCheck(this, args);
         }
-
         public void resetOrder_Click(object sender, EventArgs e)
         {
             order.list.Clear();
@@ -193,9 +196,12 @@ namespace Media_Store
                 orderMoreComboBox.Items.Add(pro.uniqueID);
                 buyProductComboBox.Items.Add(pro.uniqueID);
             }
-            removeProductBox.SelectedIndex = 0;
-            orderMoreComboBox.SelectedIndex = 0;
-            buyProductComboBox.SelectedIndex = 0;
+            if(removeProductBox.Items.Count > 0)
+                removeProductBox.SelectedIndex = 0;
+            if (orderMoreComboBox.Items.Count > 0)
+                orderMoreComboBox.SelectedIndex = 0;
+            if (buyProductComboBox.Items.Count > 0)
+                buyProductComboBox.SelectedIndex = 0;
         }
 
         internal bool UpdateSuccessLabel(int errorCode)

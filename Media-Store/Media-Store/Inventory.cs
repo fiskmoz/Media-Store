@@ -101,7 +101,7 @@ namespace Media_Store
             {
                 if (prod.uniqueID == str[0])
                 {
-                    if (prod.copies - Int32.Parse(str[1]) < 0)
+                    if (prod.copies - Int32.Parse(str[1]) - Int32.Parse(str[2]) < 0)
                         return ErrorCodes.INVALID_PRODUCT_BELOW_ZERO;
                     return ErrorCodes.SUCCESS;
                 }
