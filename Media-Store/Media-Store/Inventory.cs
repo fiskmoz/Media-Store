@@ -145,5 +145,20 @@ namespace Media_Store
             }
             return null;
         }
+        
+        internal List<Product> GetProducts(string searchTerm)
+        {
+            List<Product> list = new List<Product>();
+            foreach (var prod in CurrentProducts)
+            {
+                if (prod.uniqueID == searchTerm)
+                    list.Add(prod);
+                else if (prod.name == searchTerm)
+                    list.Add(prod);
+                else if (prod.publisher == searchTerm)
+                    list.Add(prod);
+            }
+            return list;
+        }
     }
 }

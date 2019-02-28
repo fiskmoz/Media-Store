@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Driver.cs" />
+    <Compile Include="GUIhelper\GUIHelper.cs" />
     <Compile Include="Objects and constants\ErrorCodes.cs" />
     <Compile Include="InventoryHelpers\FileManager.cs" />
     <Compile Include="GUI.cs">

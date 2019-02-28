@@ -28,14 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.storeTabPage = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridStore = new System.Windows.Forms.DataGridView();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.rebuyComboBox = new System.Windows.Forms.ComboBox();
+            this.returnTheProductButton = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.receiptCheckBox = new System.Windows.Forms.CheckBox();
+            this.itemsToBuyListView = new System.Windows.Forms.ListView();
+            this.resetOrder = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.addToPurchase = new System.Windows.Forms.Button();
             this.statusLabelStore = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.buyProductComboBox = new System.Windows.Forms.ComboBox();
@@ -45,6 +56,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.StockGUI = new System.Windows.Forms.TabPage();
             this.stockLeftPanel = new System.Windows.Forms.Panel();
+            this.dataGridViewInventory = new System.Windows.Forms.DataGridView();
             this.statusLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.stockTabControl = new System.Windows.Forms.TabControl();
@@ -81,25 +93,31 @@
             this.label11 = new System.Windows.Forms.Label();
             this.removeProductButton = new System.Windows.Forms.Button();
             this.removeProductBox = new System.Windows.Forms.ComboBox();
-            this.addToPurchase = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.resetOrder = new System.Windows.Forms.Button();
-            this.dataGridStore = new System.Windows.Forms.DataGridView();
-            this.dataGridViewInventory = new System.Windows.Forms.DataGridView();
-            this.itemsToBuyListView = new System.Windows.Forms.ListView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.searchButtonInventory = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.searchBoxInventory = new System.Windows.Forms.TextBox();
+            this.searchViewInventory = new System.Windows.Forms.ListView();
+            this.searchViewStore = new System.Windows.Forms.ListView();
+            this.searchBoxStore = new System.Windows.Forms.TextBox();
+            this.searchButtonStore = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.storeTabPage.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStore)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.StockGUI.SuspendLayout();
             this.stockLeftPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventory)).BeginInit();
             this.stockTabControl.SuspendLayout();
             this.addProductTab.SuspendLayout();
             this.orderMoreTab.SuspendLayout();
             this.removeProductTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridStore)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventory)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -131,6 +149,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl1.Location = new System.Drawing.Point(444, 4);
             this.tabControl1.Name = "tabControl1";
@@ -150,6 +169,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Current inventory";
             // 
+            // dataGridStore
+            // 
+            this.dataGridStore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStore.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridStore.Location = new System.Drawing.Point(27, 118);
+            this.dataGridStore.Name = "dataGridStore";
+            this.dataGridStore.ReadOnly = true;
+            this.dataGridStore.RowTemplate.Height = 20;
+            this.dataGridStore.Size = new System.Drawing.Size(422, 324);
+            this.dataGridStore.TabIndex = 33;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -163,16 +193,88 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.SkyBlue;
+            this.tabPage2.Controls.Add(this.label23);
+            this.tabPage2.Controls.Add(this.label24);
+            this.tabPage2.Controls.Add(this.label25);
+            this.tabPage2.Controls.Add(this.rebuyComboBox);
+            this.tabPage2.Controls.Add(this.returnTheProductButton);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(475, 485);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Rebuy";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(97, 161);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(98, 17);
+            this.label23.TabIndex = 44;
+            this.label23.Text = "Select product";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(97, 110);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(296, 17);
+            this.label24.TabIndex = 43;
+            this.label24.Text = "Select a product to be returned to the inventory";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(96, 58);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(133, 21);
+            this.label25.TabIndex = 38;
+            this.label25.Text = "Rebuy products";
+            // 
+            // rebuyComboBox
+            // 
+            this.rebuyComboBox.FormattingEnabled = true;
+            this.rebuyComboBox.Location = new System.Drawing.Point(212, 158);
+            this.rebuyComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rebuyComboBox.Name = "rebuyComboBox";
+            this.rebuyComboBox.Size = new System.Drawing.Size(180, 25);
+            this.rebuyComboBox.TabIndex = 39;
+            // 
+            // returnTheProductButton
+            // 
+            this.returnTheProductButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.returnTheProductButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.returnTheProductButton.FlatAppearance.BorderSize = 5;
+            this.returnTheProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.returnTheProductButton.Location = new System.Drawing.Point(100, 215);
+            this.returnTheProductButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.returnTheProductButton.Name = "returnTheProductButton";
+            this.returnTheProductButton.Size = new System.Drawing.Size(256, 48);
+            this.returnTheProductButton.TabIndex = 41;
+            this.returnTheProductButton.Text = "Return the product";
+            this.returnTheProductButton.UseVisualStyleBackColor = false;
+            this.returnTheProductButton.Click += new System.EventHandler(this.returnTheProductButton_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.SkyBlue;
+            this.tabPage3.Controls.Add(this.searchViewStore);
+            this.tabPage3.Controls.Add(this.searchBoxStore);
+            this.tabPage3.Controls.Add(this.searchButtonStore);
+            this.tabPage3.Controls.Add(this.label27);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(475, 485);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Search";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Aquamarine;
+            this.panel1.Controls.Add(this.receiptCheckBox);
             this.panel1.Controls.Add(this.itemsToBuyListView);
             this.panel1.Controls.Add(this.resetOrder);
             this.panel1.Controls.Add(this.label22);
@@ -190,6 +292,67 @@
             this.panel1.Size = new System.Drawing.Size(435, 515);
             this.panel1.TabIndex = 0;
             // 
+            // receiptCheckBox
+            // 
+            this.receiptCheckBox.AutoSize = true;
+            this.receiptCheckBox.Location = new System.Drawing.Point(31, 253);
+            this.receiptCheckBox.Name = "receiptCheckBox";
+            this.receiptCheckBox.Size = new System.Drawing.Size(81, 21);
+            this.receiptCheckBox.TabIndex = 46;
+            this.receiptCheckBox.Text = "Receipt?";
+            this.receiptCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // itemsToBuyListView
+            // 
+            this.itemsToBuyListView.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemsToBuyListView.Location = new System.Drawing.Point(31, 281);
+            this.itemsToBuyListView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.itemsToBuyListView.Name = "itemsToBuyListView";
+            this.itemsToBuyListView.Size = new System.Drawing.Size(387, 166);
+            this.itemsToBuyListView.TabIndex = 34;
+            this.itemsToBuyListView.TileSize = new System.Drawing.Size(1, 1);
+            this.itemsToBuyListView.UseCompatibleStateImageBehavior = false;
+            this.itemsToBuyListView.View = System.Windows.Forms.View.List;
+            // 
+            // resetOrder
+            // 
+            this.resetOrder.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.resetOrder.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.resetOrder.FlatAppearance.BorderSize = 5;
+            this.resetOrder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.resetOrder.Location = new System.Drawing.Point(31, 455);
+            this.resetOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.resetOrder.Name = "resetOrder";
+            this.resetOrder.Size = new System.Drawing.Size(120, 48);
+            this.resetOrder.TabIndex = 45;
+            this.resetOrder.Text = "Reset order";
+            this.resetOrder.UseVisualStyleBackColor = false;
+            this.resetOrder.Click += new System.EventHandler(this.resetOrder_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(28, 214);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(176, 17);
+            this.label22.TabIndex = 44;
+            this.label22.Text = "Your current purchase order:";
+            // 
+            // addToPurchase
+            // 
+            this.addToPurchase.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.addToPurchase.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.addToPurchase.FlatAppearance.BorderSize = 5;
+            this.addToPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addToPurchase.Location = new System.Drawing.Point(210, 198);
+            this.addToPurchase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addToPurchase.Name = "addToPurchase";
+            this.addToPurchase.Size = new System.Drawing.Size(155, 48);
+            this.addToPurchase.TabIndex = 43;
+            this.addToPurchase.Text = "Add to purchase order";
+            this.addToPurchase.UseVisualStyleBackColor = false;
+            this.addToPurchase.Click += new System.EventHandler(this.addToPurchase_Click);
+            // 
             // statusLabelStore
             // 
             this.statusLabelStore.AutoSize = true;
@@ -203,7 +366,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(28, 147);
+            this.label20.Location = new System.Drawing.Point(28, 120);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(98, 17);
             this.label20.TabIndex = 41;
@@ -212,7 +375,7 @@
             // buyProductComboBox
             // 
             this.buyProductComboBox.FormattingEnabled = true;
-            this.buyProductComboBox.Location = new System.Drawing.Point(143, 144);
+            this.buyProductComboBox.Location = new System.Drawing.Point(143, 117);
             this.buyProductComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buyProductComboBox.Name = "buyProductComboBox";
             this.buyProductComboBox.Size = new System.Drawing.Size(180, 25);
@@ -221,7 +384,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(28, 197);
+            this.label21.Location = new System.Drawing.Point(28, 170);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(159, 17);
             this.label21.TabIndex = 40;
@@ -229,7 +392,7 @@
             // 
             // copiesToBuyTextBox
             // 
-            this.copiesToBuyTextBox.Location = new System.Drawing.Point(207, 192);
+            this.copiesToBuyTextBox.Location = new System.Drawing.Point(207, 165);
             this.copiesToBuyTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.copiesToBuyTextBox.Name = "copiesToBuyTextBox";
             this.copiesToBuyTextBox.Size = new System.Drawing.Size(116, 22);
@@ -244,7 +407,7 @@
             this.purchaseButton.Location = new System.Drawing.Point(157, 455);
             this.purchaseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.purchaseButton.Name = "purchaseButton";
-            this.purchaseButton.Size = new System.Drawing.Size(261, 48);
+            this.purchaseButton.Size = new System.Drawing.Size(220, 48);
             this.purchaseButton.TabIndex = 34;
             this.purchaseButton.Text = "Confirm Purchase";
             this.purchaseButton.UseVisualStyleBackColor = false;
@@ -287,6 +450,15 @@
             this.stockLeftPanel.Size = new System.Drawing.Size(434, 515);
             this.stockLeftPanel.TabIndex = 38;
             // 
+            // dataGridViewInventory
+            // 
+            this.dataGridViewInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewInventory.Location = new System.Drawing.Point(6, 95);
+            this.dataGridViewInventory.Name = "dataGridViewInventory";
+            this.dataGridViewInventory.ReadOnly = true;
+            this.dataGridViewInventory.Size = new System.Drawing.Size(414, 409);
+            this.dataGridViewInventory.TabIndex = 37;
+            // 
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
@@ -312,6 +484,7 @@
             this.stockTabControl.Controls.Add(this.addProductTab);
             this.stockTabControl.Controls.Add(this.orderMoreTab);
             this.stockTabControl.Controls.Add(this.removeProductTab);
+            this.stockTabControl.Controls.Add(this.tabPage4);
             this.stockTabControl.Dock = System.Windows.Forms.DockStyle.Right;
             this.stockTabControl.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stockTabControl.Location = new System.Drawing.Point(442, 4);
@@ -669,84 +842,109 @@
             this.removeProductBox.Size = new System.Drawing.Size(140, 25);
             this.removeProductBox.TabIndex = 5;
             // 
-            // addToPurchase
+            // tabPage4
             // 
-            this.addToPurchase.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.addToPurchase.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.addToPurchase.FlatAppearance.BorderSize = 5;
-            this.addToPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addToPurchase.Location = new System.Drawing.Point(210, 225);
-            this.addToPurchase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.addToPurchase.Name = "addToPurchase";
-            this.addToPurchase.Size = new System.Drawing.Size(155, 48);
-            this.addToPurchase.TabIndex = 43;
-            this.addToPurchase.Text = "Add to purchase order";
-            this.addToPurchase.UseVisualStyleBackColor = false;
-            this.addToPurchase.Click += new System.EventHandler(this.addToPurchase_Click);
+            this.tabPage4.BackColor = System.Drawing.Color.SkyBlue;
+            this.tabPage4.Controls.Add(this.searchViewInventory);
+            this.tabPage4.Controls.Add(this.searchBoxInventory);
+            this.tabPage4.Controls.Add(this.searchButtonInventory);
+            this.tabPage4.Controls.Add(this.label26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(477, 485);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Search";
             // 
-            // label22
+            // searchButtonInventory
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(28, 241);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(176, 17);
-            this.label22.TabIndex = 44;
-            this.label22.Text = "Your current purchase order:";
+            this.searchButtonInventory.BackColor = System.Drawing.Color.SteelBlue;
+            this.searchButtonInventory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.searchButtonInventory.FlatAppearance.BorderSize = 5;
+            this.searchButtonInventory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.searchButtonInventory.Location = new System.Drawing.Point(247, 69);
+            this.searchButtonInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchButtonInventory.Name = "searchButtonInventory";
+            this.searchButtonInventory.Size = new System.Drawing.Size(181, 35);
+            this.searchButtonInventory.TabIndex = 44;
+            this.searchButtonInventory.Text = "Search";
+            this.searchButtonInventory.UseVisualStyleBackColor = false;
+            this.searchButtonInventory.Click += new System.EventHandler(this.searchButtonInventory_Click);
             // 
-            // resetOrder
+            // label26
             // 
-            this.resetOrder.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.resetOrder.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.resetOrder.FlatAppearance.BorderSize = 5;
-            this.resetOrder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.resetOrder.Location = new System.Drawing.Point(31, 455);
-            this.resetOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.resetOrder.Name = "resetOrder";
-            this.resetOrder.Size = new System.Drawing.Size(120, 48);
-            this.resetOrder.TabIndex = 45;
-            this.resetOrder.Text = "Reset order";
-            this.resetOrder.UseVisualStyleBackColor = false;
-            this.resetOrder.Click += new System.EventHandler(this.resetOrder_Click);
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(37, 29);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(219, 21);
+            this.label26.TabIndex = 43;
+            this.label26.Text = "Search for a product entry:";
             // 
-            // dataGridStore
+            // searchBoxInventory
             // 
-            this.dataGridStore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStore.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridStore.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridStore.Location = new System.Drawing.Point(27, 118);
-            this.dataGridStore.Name = "dataGridStore";
-            this.dataGridStore.ReadOnly = true;
-            this.dataGridStore.RowTemplate.Height = 20;
-            this.dataGridStore.Size = new System.Drawing.Size(422, 324);
-            this.dataGridStore.TabIndex = 33;
+            this.searchBoxInventory.Location = new System.Drawing.Point(58, 75);
+            this.searchBoxInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchBoxInventory.Name = "searchBoxInventory";
+            this.searchBoxInventory.Size = new System.Drawing.Size(140, 22);
+            this.searchBoxInventory.TabIndex = 45;
             // 
-            // dataGridViewInventory
+            // searchViewInventory
             // 
-            this.dataGridViewInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewInventory.Location = new System.Drawing.Point(6, 95);
-            this.dataGridViewInventory.Name = "dataGridViewInventory";
-            this.dataGridViewInventory.ReadOnly = true;
-            this.dataGridViewInventory.Size = new System.Drawing.Size(414, 409);
-            this.dataGridViewInventory.TabIndex = 37;
+            this.searchViewInventory.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchViewInventory.Location = new System.Drawing.Point(58, 151);
+            this.searchViewInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchViewInventory.Name = "searchViewInventory";
+            this.searchViewInventory.Size = new System.Drawing.Size(387, 305);
+            this.searchViewInventory.TabIndex = 46;
+            this.searchViewInventory.TileSize = new System.Drawing.Size(1, 1);
+            this.searchViewInventory.UseCompatibleStateImageBehavior = false;
+            this.searchViewInventory.View = System.Windows.Forms.View.List;
             // 
-            // itemsToBuyListView
+            // searchViewStore
             // 
-            this.itemsToBuyListView.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsToBuyListView.Location = new System.Drawing.Point(31, 281);
-            this.itemsToBuyListView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.itemsToBuyListView.Name = "itemsToBuyListView";
-            this.itemsToBuyListView.Size = new System.Drawing.Size(387, 166);
-            this.itemsToBuyListView.TabIndex = 34;
-            this.itemsToBuyListView.TileSize = new System.Drawing.Size(1, 1);
-            this.itemsToBuyListView.UseCompatibleStateImageBehavior = false;
-            this.itemsToBuyListView.View = System.Windows.Forms.View.List;
+            this.searchViewStore.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchViewStore.Location = new System.Drawing.Point(54, 151);
+            this.searchViewStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchViewStore.Name = "searchViewStore";
+            this.searchViewStore.Size = new System.Drawing.Size(387, 305);
+            this.searchViewStore.TabIndex = 50;
+            this.searchViewStore.TileSize = new System.Drawing.Size(1, 1);
+            this.searchViewStore.UseCompatibleStateImageBehavior = false;
+            this.searchViewStore.View = System.Windows.Forms.View.List;
+            // 
+            // searchBoxStore
+            // 
+            this.searchBoxStore.Location = new System.Drawing.Point(54, 75);
+            this.searchBoxStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchBoxStore.Name = "searchBoxStore";
+            this.searchBoxStore.Size = new System.Drawing.Size(140, 22);
+            this.searchBoxStore.TabIndex = 49;
+            // 
+            // searchButtonStore
+            // 
+            this.searchButtonStore.BackColor = System.Drawing.Color.SteelBlue;
+            this.searchButtonStore.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.searchButtonStore.FlatAppearance.BorderSize = 5;
+            this.searchButtonStore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.searchButtonStore.Location = new System.Drawing.Point(243, 69);
+            this.searchButtonStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchButtonStore.Name = "searchButtonStore";
+            this.searchButtonStore.Size = new System.Drawing.Size(181, 35);
+            this.searchButtonStore.TabIndex = 48;
+            this.searchButtonStore.Text = "Search";
+            this.searchButtonStore.UseVisualStyleBackColor = false;
+            this.searchButtonStore.Click += new System.EventHandler(this.searchButtonStore_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(33, 29);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(219, 21);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Search for a product entry:";
             // 
             // GUI
             // 
@@ -765,11 +963,17 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStore)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.StockGUI.ResumeLayout(false);
             this.stockLeftPanel.ResumeLayout(false);
             this.stockLeftPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventory)).EndInit();
             this.stockTabControl.ResumeLayout(false);
             this.addProductTab.ResumeLayout(false);
             this.addProductTab.PerformLayout();
@@ -777,8 +981,8 @@
             this.orderMoreTab.PerformLayout();
             this.removeProductTab.ResumeLayout(false);
             this.removeProductTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridStore)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventory)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -843,6 +1047,22 @@
         private System.Windows.Forms.DataGridView dataGridStore;
         private System.Windows.Forms.DataGridView dataGridViewInventory;
         private System.Windows.Forms.ListView itemsToBuyListView;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox rebuyComboBox;
+        private System.Windows.Forms.Button returnTheProductButton;
+        private System.Windows.Forms.CheckBox receiptCheckBox;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ListView searchViewStore;
+        private System.Windows.Forms.TextBox searchBoxStore;
+        private System.Windows.Forms.Button searchButtonStore;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ListView searchViewInventory;
+        private System.Windows.Forms.TextBox searchBoxInventory;
+        private System.Windows.Forms.Button searchButtonInventory;
+        private System.Windows.Forms.Label label26;
     }
 }
 

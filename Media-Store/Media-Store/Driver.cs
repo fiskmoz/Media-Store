@@ -21,6 +21,7 @@ namespace Media_Store
             gui.CreateNewSetSelection(inventory.ProductSelection);
             gui.UpdateCurrentInventory(inventory.CurrentProducts);
             SetListeners();
+            
             Application.Run(gui);
         }
 
@@ -34,6 +35,7 @@ namespace Media_Store
             gui.OrderMoreProducts += new EventHandler<StringListEventArgs>(OrderMoreProductsEvent);
             gui.BuyProductCheck += new EventHandler<StringListEventArgs>(BuyProductsCheck);
             gui.BuyProducts += new EventHandler<ProductListEventArgs>(BuyProducts);
+            gui.SearchProduct += new EventHandler<StringListEventArgs>(SearchProducts);
         }
 
         private void CreateBookEvent(object obj, StringListEventArgs e)
@@ -86,6 +88,11 @@ namespace Media_Store
                 gui.UpdateCurrentInventory(inventory.CurrentProducts);
                 gui.resetOrder_Click(this, new EventArgs());
             }
+        }
+
+        private void SearchProducts(object obj, StringListEventArgs e)
+        {
+            gui.UpdateSearchFindings(inventory.GetProducts(e.str[0]));
         }
     }
 }
