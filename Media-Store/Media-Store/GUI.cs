@@ -18,11 +18,16 @@ namespace Media_Store
         public event EventHandler<StringListEventArgs> CreateGame;
         public event EventHandler<StringListEventArgs> RemoveProduct;
         public event EventHandler<StringListEventArgs> OrderMoreProducts;
-        public event EventHandler<StringListEventArgs> BuyProduct;
+        public event EventHandler<StringListEventArgs> BuyProductCheck;
+        public event EventHandler<ProductListEventArgs> BuyProducts;
+
+        private Order order;
 
         public GUI()
         {
             InitializeComponent();
+            order = new Order();
+            itemsToBuyListView.Items.Add(string.Format("{0,-20}{1,-20}", "ID", "CopiesToBuy"));
         }
 
         private void addProductBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,10 +103,26 @@ namespace Media_Store
 
         private void purchaseButton_Click(object sender, EventArgs e)
         {
+            var args = new ProductListEventArgs();
+            args.products = order.list;
+            args.ToBuy = order.ToBuy;
+            BuyProducts(this, args);
+        }
+
+        private void addToPurchase_Click(object sender, EventArgs e)
+        {
             var args = new StringListEventArgs();
             args.str.Add((string)buyProductComboBox.SelectedItem);
-            args.str.Add((string)copiesToBuyTextBox.Text);
-            BuyProduct(this, args);
+            args.str.Add((string)copiesToBuyTextBox.Text - );
+            BuyProductCheck(this, args);
+        }
+
+        public void resetOrder_Click(object sender, EventArgs e)
+        {
+            order.list.Clear();
+            order.ToBuy.Clear();
+            itemsToBuyListView.Items.Clear();
+            itemsToBuyListView.Items.Add(string.Format("{0,-20}{1,-20}", "ID", "CopiesToBuy"));
         }
 
         internal void CreateNewSetSelection(List<Product> list)
@@ -133,17 +154,41 @@ namespace Media_Store
 
         internal void UpdateCurrentInventory(List<Product> list)
         {
-            productListView.Items.Clear();
-            productListViewStoreTab.Items.Clear();
             removeProductBox.Items.Clear();
             orderMoreComboBox.Items.Clear();
             buyProductComboBox.Items.Clear();
-            productListView.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", "Type", "ID", "Copies"));
-            productListViewStoreTab.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", "Type", "ID", "Copies"));
+            DataTable table = new DataTable();
+            table.Columns.Add("Type", typeof(string));
+            table.Columns.Add("ID", typeof(string));
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Price", typeof(float));
+            table.Columns.Add("Publisher", typeof(string));
+            table.Columns.Add("Copies", typeof(int));
+            table.Columns.Add("Entry5", typeof(string));
+            table.Columns.Add("Entr6", typeof(string));
+            foreach(var entry in list)
+            {
+                // ADD UNIQUE THINGS HERE LATER
+                switch(entry.GetType().ToString().Replace("Media_Store.", ""))
+                {
+                    case "Book":
+                        table.Rows.Add(entry.GetType().ToString().Replace("Media_Store.", ""), entry.uniqueID, entry.name, entry.price, entry.publisher, entry.copies);
+                        break;
+                    case "Movie":
+                        table.Rows.Add(entry.GetType().ToString().Replace("Media_Store.", ""), entry.uniqueID, entry.name, entry.price, entry.publisher, entry.copies);
+                        break;
+                    case "CD":
+                        table.Rows.Add(entry.GetType().ToString().Replace("Media_Store.", ""), entry.uniqueID, entry.name, entry.price, entry.publisher, entry.copies);
+                        break;
+                    case "Game":
+                        table.Rows.Add(entry.GetType().ToString().Replace("Media_Store.", ""), entry.uniqueID, entry.name, entry.price, entry.publisher, entry.copies);
+                        break;
+                }
+            }
+            dataGridStore.DataSource = table;
+            dataGridViewInventory.DataSource = table;
             foreach (Product pro in list)
             {
-                productListView.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", pro.GetType().ToString().Replace("Media_Store.", ""), pro.uniqueID, pro.copies.ToString()));
-                productListViewStoreTab.Items.Add(string.Format("{0,-10}{1,-20}{2,-10}", pro.GetType().ToString().Replace("Media_Store.", ""), pro.uniqueID, pro.copies.ToString()));
                 removeProductBox.Items.Add(pro.uniqueID);
                 orderMoreComboBox.Items.Add(pro.uniqueID);
                 buyProductComboBox.Items.Add(pro.uniqueID);
@@ -241,6 +286,14 @@ namespace Media_Store
                     return true;
             }
             return false;
+        }
+
+        internal void UpdateOrderList(Product prod)
+        {
+            itemsToBuyListView.Items.Add(string.Format("{0,-20}{1,-20}", (string)buyProductComboBox.SelectedItem, copiesToBuyTextBox.Text));
+            order.list.Add(prod);
+            order.ToBuy.Add(Int32.Parse(copiesToBuyTextBox.Text));
+            
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Media_Store
 {
     [Serializable]
-    class Product
+    public class Product
     {
         public string uniqueID;
         public string name;
@@ -24,6 +24,7 @@ namespace Media_Store
             this.copies = copies;
         }
     }
+    
     [Serializable]
     class Book : Product
     {

@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Driver.cs" />
-    <Compile Include="ErrorCodes.cs" />
+    <Compile Include="Objects and constants\ErrorCodes.cs" />
     <Compile Include="InventoryHelpers\FileManager.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
@@ -56,7 +56,8 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Objects and constants\Order.cs" />
+    <Compile Include="Objects and constants\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InventoryHelpers\Validator.cs" />

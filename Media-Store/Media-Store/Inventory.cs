@@ -90,7 +90,7 @@ namespace Media_Store
             return ErrorCodes.INVALID_ADD_TARGET;
         }
 
-        internal int BuyProduct(List<string> str)
+        internal int BuyProductCheck(List<string> str)
         {
             if (!validator.IntParsing(str[1]))
                 return ErrorCodes.INVALID_BUY_COPIES;
@@ -103,12 +103,27 @@ namespace Media_Store
                 {
                     if (prod.copies - Int32.Parse(str[1]) < 0)
                         return ErrorCodes.INVALID_PRODUCT_BELOW_ZERO;
-                    prod.copies -= Int32.Parse(str[1]);
-                    fileManager.WriteToFile(CurrentProducts);
                     return ErrorCodes.SUCCESS;
                 }
             }
             return ErrorCodes.INVALID_BUY_TARGET;
+        }
+
+        internal int BuyProducts(List<Product> products, List<int> toBuy)
+        {
+            var i = 0;
+            foreach(Product prod in products)
+            {
+                foreach(Product product in CurrentProducts)
+                {
+                    if(prod.uniqueID == product.uniqueID)
+                    {
+                        product.copies -= toBuy[i];
+                    }
+                }
+                i++;
+            }
+            return ErrorCodes.SUCCESS;
         }
 
         internal int GetCopies(string ID)
@@ -119,6 +134,16 @@ namespace Media_Store
                     return prod.copies;
             }
             return 0;
+        }
+
+        internal Product GetProduct(string ID)
+        {
+            foreach (var prod in CurrentProducts)
+            {
+                if (prod.uniqueID == ID)
+                    return prod;
+            }
+            return null;
         }
     }
 }

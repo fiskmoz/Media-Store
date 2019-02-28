@@ -32,7 +32,8 @@ namespace Media_Store
             gui.CreateGame += new EventHandler<StringListEventArgs>(CreateGameEvent);
             gui.RemoveProduct += new EventHandler<StringListEventArgs>(RemoveProductEvent);
             gui.OrderMoreProducts += new EventHandler<StringListEventArgs>(OrderMoreProductsEvent);
-            gui.BuyProduct += new EventHandler<StringListEventArgs>(BuyProducts);
+            gui.BuyProductCheck += new EventHandler<StringListEventArgs>(BuyProductsCheck);
+            gui.BuyProducts += new EventHandler<ProductListEventArgs>(BuyProducts);
         }
 
         private void CreateBookEvent(object obj, StringListEventArgs e)
@@ -72,15 +73,19 @@ namespace Media_Store
                 gui.UpdateCurrentInventory(inventory.CurrentProducts);
         }
 
-        private void BuyProducts(object obj, StringListEventArgs e)
+        private void BuyProductsCheck(object obj, StringListEventArgs e)
         {
-            if (gui.UpdateSuccessLabel(inventory.BuyProduct(e.str)))
-                gui.UpdateCurrentInventory(inventory.CurrentProducts);
+            if (gui.UpdateSuccessLabel(inventory.BuyProductCheck(e.str)))
+                gui.UpdateOrderList(inventory.GetProduct(e.str[0]));
         }
-    }
 
-    public class StringListEventArgs : EventArgs
-    {
-        public List<string> str = new List<string>();
+        private void BuyProducts(object obj, ProductListEventArgs e)
+        {
+            if (gui.UpdateSuccessLabel(inventory.BuyProducts(e.products, e.ToBuy)))
+            {
+                gui.UpdateCurrentInventory(inventory.CurrentProducts);
+                gui.resetOrder_Click(this, new EventArgs());
+            }
+        }
     }
 }
