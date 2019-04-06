@@ -1,0 +1,7 @@
+﻿TODO: 
+Göra om skriva/spara till .txt format.
+Utöka sök funktionen. 
+Då vy byts ändra success label.
+Kommentera koden.
+Fixa ett klassdiagram!
+Skriva rapport!

@@ -13,11 +13,13 @@ namespace Media_Store
 
         public FileManager()
         {
-            serializationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Inventory.bin");
+            serializationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Inventory.txt");
         }
 
         internal List<Product> ReadFromFile(List<Product> list)
         {
+            string text = System.IO.File.ReadAllText(serializationFile);
+
             try
             {
                 using (Stream stream = File.Open(serializationFile, FileMode.Open))

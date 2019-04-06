@@ -74,8 +74,8 @@ namespace Media_Store
             table.Columns.Add("Price", typeof(float));
             table.Columns.Add("Publisher", typeof(string));
             table.Columns.Add("Copies", typeof(int));
-            table.Columns.Add("Entry5", typeof(string));
-            table.Columns.Add("Entr6", typeof(string));
+            // table.Columns.Add("Entry5", typeof(string));
+            // table.Columns.Add("Entr6", typeof(string));
             foreach (var entry in list)
             {
                 // ADD UNIQUE THINGS HERE LATER

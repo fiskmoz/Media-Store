@@ -138,26 +138,13 @@ namespace Media_Store
 
         internal Product GetProduct(string ID)
         {
-            foreach (var prod in CurrentProducts)
-            {
-                if (prod.uniqueID == ID)
-                    return prod;
-            }
-            return null;
+            var prod = (from product in CurrentProducts where product.uniqueID == ID select product).ToList<Product>();
+            return prod[0];
         }
         
         internal List<Product> GetProducts(string searchTerm)
         {
-            List<Product> list = new List<Product>();
-            foreach (var prod in CurrentProducts)
-            {
-                if (prod.uniqueID == searchTerm)
-                    list.Add(prod);
-                else if (prod.name == searchTerm)
-                    list.Add(prod);
-                else if (prod.publisher == searchTerm)
-                    list.Add(prod);
-            }
+            var list = (from prod in CurrentProducts where prod.uniqueID == searchTerm || prod.name == searchTerm || prod.publisher == searchTerm orderby prod.name ascending select prod).ToList<Product>();
             return list;
         }
     }
