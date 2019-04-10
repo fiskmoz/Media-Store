@@ -189,7 +189,6 @@ namespace Media_Store
             comboBoxes.Add(buyProductComboBox);
             comboBoxes.Add(rebuyComboBox);
             itemsToBuyListView.Items.Add(string.Format("{0,-20}{1,-20}", "ID", "CopiesToBuy"));
-
         }
 
         internal bool DisplayTextBox()
