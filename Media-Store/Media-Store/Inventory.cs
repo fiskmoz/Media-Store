@@ -31,6 +31,9 @@ namespace Media_Store
             ProductSelection.Add(new Game("4", "Default", 0, "Default", 0, "Default"));
         }
 
+        // When clicking create product button. 
+        // Faultcheck otherwise add to currentProducts list 
+        // Also write the new currentProducts list to file.
         internal int CreateProduct(string type, List<string> str)
         {
             int code = validator.CreateValidation(str, CurrentProducts);
@@ -57,6 +60,9 @@ namespace Media_Store
             return ErrorCodes.SUCCESS;
         }
 
+        // When clicking remove product button confirm.
+        // Remove the product 
+        // Update file 
         internal int RemoveProduct(List<string> str)
         {
             foreach(var prod in CurrentProducts)
@@ -71,6 +77,9 @@ namespace Media_Store
             return ErrorCodes.INVALID_REMOVE_TARGET;
         }
 
+        // When clicking order more products
+        // Update the number of specific product and also do faultchecks
+        // Write updated list to file.
         internal int OrderMoreProducts(List<string> str)
         {
             if(!validator.IntParsing(str[1]))
@@ -90,6 +99,8 @@ namespace Media_Store
             return ErrorCodes.INVALID_ADD_TARGET;
         }
 
+        // A fault checker when buying products
+        // Returns Codes listed in ErrorCodes.cs
         internal int BuyProductCheck(List<string> str)
         {
             if (!validator.IntParsing(str[1]))
@@ -109,6 +120,9 @@ namespace Media_Store
             return ErrorCodes.INVALID_BUY_TARGET;
         }
 
+        // When clicking the buy products button
+        // Products = list of products that someone wants to buy
+        // toBuy = list of no of of items that someone wants to buy, they directly correlate in array position.
         internal int BuyProducts(List<Product> products, List<int> toBuy)
         {
             var i = 0;
@@ -126,6 +140,7 @@ namespace Media_Store
             return ErrorCodes.SUCCESS;
         }
 
+        // Get the no. of copies for a speicifc ID.
         internal int GetCopies(string ID)
         {
             foreach (var prod in CurrentProducts)
@@ -136,12 +151,14 @@ namespace Media_Store
             return 0;
         }
 
+        // Return the product for a specific ID.
         internal Product GetProduct(string ID)
         {
             var prod = (from product in CurrentProducts where product.uniqueID == ID select product).ToList<Product>();
             return prod[0];
         }
         
+        // Return a list of products filtered by a specific searchTerm.
         internal List<Product> GetProducts(string searchTerm)
         {
             var list = (from prod in CurrentProducts where prod.uniqueID == searchTerm || prod.name == searchTerm || prod.publisher == searchTerm 

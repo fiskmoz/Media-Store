@@ -13,6 +13,7 @@ namespace Media_Store
         {
 
         }
+        
         internal int CreateValidation(List<string> toValidate, List<Product> comparision)
         {
             if (!CheckDuplicates(comparision, toValidate[0]))

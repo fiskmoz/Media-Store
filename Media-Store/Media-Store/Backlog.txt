@@ -1,4 +1,2 @@
 ﻿TODO: 
-Kommentera koden.
-Fixa ett klassdiagram!
 Skriva rapport!

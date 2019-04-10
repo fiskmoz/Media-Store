@@ -25,6 +25,7 @@ namespace Media_Store
             Application.Run(gui);
         }
 
+        // Setting up listeners for events in the prgram and then decide the flow of the program depending on what events fire.
         private void SetListeners()
         {
             gui.CreateBook += new EventHandler<StringListEventArgs>(CreateBookEvent);

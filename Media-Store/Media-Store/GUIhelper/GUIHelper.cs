@@ -37,6 +37,7 @@ namespace Media_Store
 
         }
 
+        // Printing function.
         private void printDocument_PrintPage(object sender, PrintPageEventArgs ev)
         {
             Graphics graphic = ev.Graphics;

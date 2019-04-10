@@ -13,9 +13,11 @@ namespace Media_Store
 
         public FileManager()
         {
+            // PATH!
             serializationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Inventory.txt");
         }
 
+        // Read from the file and add all entries to the list and return it.
         internal List<Product> ReadFromFile(List<Product> list)
         {
             if(!File.Exists(serializationFile))
@@ -53,6 +55,7 @@ namespace Media_Store
             return list;
         }
 
+        // Save list to file by overwriting everything currently there.
         internal void WriteToFile(List<Product> list)
         {
             if (!File.Exists(serializationFile))
@@ -93,6 +96,7 @@ namespace Media_Store
             }
         }
 
+        // If file does not exist for some reason run this.
         internal void CreateFilePath()
         {
             var fileStream = File.Open(serializationFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
