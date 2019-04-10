@@ -38,6 +38,14 @@ namespace Media_Store
             dataGridStoreP = this.dataGridStore;
         }
 
+       private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            statusLabel.Text = "Status: waiting";
+            statusLabel.ForeColor = Color.Black;
+            statusLabelStore.Text = "Status: waiting ";
+            statusLabelStore.ForeColor = Color.Black;
+        }
+
         private void addProductBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch(addProductBox.SelectedIndex)

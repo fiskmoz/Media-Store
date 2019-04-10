@@ -18,81 +18,64 @@ namespace Media_Store
 
         internal List<Product> ReadFromFile(List<Product> list)
         {
-            using (var stream = new StreamReader(serializationFile))
+            if(!File.Exists(serializationFile))
             {
-                string line;
-                while((line = stream.ReadLine()) != null)
-                {
-                    var strList = line.Split(';');
-                    switch(strList[0])
-                    {
-                        case "Movie":
-                            list.Add(new Movie(strList[1], strList[2], float.Parse(strList[3]), strList[4], Int32.Parse(strList[5]), strList[6], strList[7]));
-                            break;
-                        case "CD":
-                            break;
-                        case "Game":
-                            break;
-                        case "Book":
-                            break;
-                        
-                    }
-                }
+                CreateFilePath();
             }
+            using (var fileStream = File.Open(serializationFile, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                fileStream.Close();
+            }
+            using (var stream = new StreamReader(serializationFile))
+                {
+                    string line;
+                    while ((line = stream.ReadLine()) != null)
+                    {
+                        var split = line.Split(ErrorCodes.SEPARATOR);
+                        switch (split[0])
+                        {
+                            case "Movie":
+                                list.Add(new Movie(split[1], split[2], float.Parse(split[3]), split[4], Int32.Parse(split[5]), split[6], split[7]));
+                                break;
+                            case "CD":
+                                list.Add(new CD(split[1], split[2], float.Parse(split[3]), split[4], Int32.Parse(split[5]), split[6]));
+                                break;
+                            case "Game":
+                                list.Add(new Game(split[1], split[2], float.Parse(split[3]), split[4], Int32.Parse(split[5]), split[6]));
+                                break;
+                            case "Book":
+                                list.Add(new Book(split[1], split[2], float.Parse(split[3]), split[4], Int32.Parse(split[5]), split[6], Int32.Parse(split[7])));
+                                break;
 
+                        }
+                    }
+                }
             return list;
-            //list = text.Split(';');
-            /*
-            try
-            {
-                using (Stream stream = File.Open(serializationFile, FileMode.Open))
-                {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    try
-                    {
-                        list = (List<Product>)bformatter.Deserialize(stream);
-                    }
-                    catch (Exception e)
-                    {
-
-                    }
-                    return list;
-                }
-        }
-            catch(Exception e)
-            {
-                using (Stream stream = File.Open(serializationFile, FileMode.Create))
-                {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    try
-                    {
-                        list = (List<Product>)bformatter.Deserialize(stream);
-                    }
-                    catch (Exception g)
-                    {
-
-                    }
-                    return list;
-                }
-            }*/
         }
 
         internal void WriteToFile(List<Product> list)
         {
+            if (!File.Exists(serializationFile))
+            {
+                CreateFilePath();
+            }
             using (var stream = new StreamWriter(serializationFile, false))
             {
                 foreach (Product prod in list)
                 {
-                    string str = prod.GetType().ToString() + prod.uniqueID + ";" + prod.name + ";" + prod.publisher + ";" + prod.price.ToString() + ";" + prod.copies.ToString() + ";";
+                    string str = prod.GetType().ToString().Replace("Media_Store.", "") + ErrorCodes.SEPARATOR + prod.uniqueID + 
+                        ErrorCodes.SEPARATOR + prod.publisher + ErrorCodes.SEPARATOR + prod.price.ToString() + 
+                        ErrorCodes.SEPARATOR + prod.name + ErrorCodes.SEPARATOR + prod.copies.ToString() + ErrorCodes.SEPARATOR;
+
                     if(prod.GetType().Equals(typeof(Movie)))
                     {
                         Movie movie = (Movie)prod;
-                        str += movie.director + ';' + movie.mainActor;
+                        str += movie.director + ErrorCodes.SEPARATOR + movie.mainActor;
                     }
                     else if (prod.GetType().Equals(typeof(Book)))
                     {
                         Book book = (Book)prod;
-                        str += book.author + ';' + book.version.ToString();
+                        str += book.author + ErrorCodes.SEPARATOR + book.version.ToString();
                     }
                     else if (prod.GetType().Equals(typeof(CD)))
                     {
@@ -108,6 +91,12 @@ namespace Media_Store
                 }
                 stream.Close();
             }
+        }
+
+        internal void CreateFilePath()
+        {
+            var fileStream = File.Open(serializationFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            fileStream.Close();
         }
     }
 }

@@ -131,6 +131,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(938, 553);
             this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // storeTabPage
             // 
@@ -156,6 +157,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(483, 515);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -493,6 +495,7 @@
             this.stockTabControl.SelectedIndex = 0;
             this.stockTabControl.Size = new System.Drawing.Size(485, 515);
             this.stockTabControl.TabIndex = 37;
+            this.stockTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // addProductTab
             // 

@@ -24,5 +24,7 @@ namespace Media_Store
         public const Int32 INVALID_OUTOFRANGE = 12;
         public const Int32 SUCCESS = 14;
 
+        public const char SEPARATOR = ':';
+
     }
 }

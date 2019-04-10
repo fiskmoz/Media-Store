@@ -144,7 +144,8 @@ namespace Media_Store
         
         internal List<Product> GetProducts(string searchTerm)
         {
-            var list = (from prod in CurrentProducts where prod.uniqueID == searchTerm || prod.name == searchTerm || prod.publisher == searchTerm orderby prod.name ascending select prod).ToList<Product>();
+            var list = (from prod in CurrentProducts where prod.uniqueID == searchTerm || prod.name == searchTerm || prod.publisher == searchTerm 
+                        orderby prod.name ascending select prod).ToList<Product>();
             return list;
         }
     }
