@@ -1,112 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Media_Store.Driver" Collapsed="true">
-    <Position X="4.25" Y="4.25" Width="1.5" />
+  <Class Name="Media_Store.Driver">
+    <Position X="3.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAhAAAAAAAAAIAIJAAMAAAAAAAQCAAIAAAAAAAA=</HashCode>
       <FileName>Driver.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Media_Store.GUI" Collapsed="true">
-    <Position X="1.75" Y="5.5" Width="1.5" />
+    <Position X="1" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>/yGRgQADRWOgxRDIpAGKAwlioEsCKgkHUgIAAREHBHA=</HashCode>
       <FileName>GUI.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.GUIHelper" Collapsed="true">
-    <Position X="0.5" Y="6.75" Width="1.5" />
+  <Class Name="Media_Store.GUIHelper">
+    <Position X="0.5" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAABAAAAAAQIAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>GUIhelper\GUIHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Inventory" Collapsed="true">
-    <Position X="6.5" Y="5.5" Width="1.5" />
+  <Class Name="Media_Store.Inventory">
+    <Position X="5.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAgAAAAABQAgAAAIAAIAAAAAAAACAAAwAAACIAAAAA=</HashCode>
       <FileName>Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.FileManager" Collapsed="true">
-    <Position X="8.25" Y="6.75" Width="1.5" />
+  <Class Name="Media_Store.FileManager">
+    <Position X="8.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAABAAAAIAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>InventoryHelpers\FileManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Validator" Collapsed="true">
-    <Position X="5.75" Y="6.75" Width="1.5" />
+  <Class Name="Media_Store.Validator">
+    <Position X="8.5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAgAAAAAgAIABAAAAAAACA=</HashCode>
       <FileName>InventoryHelpers\Validator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Media_Store.ErrorCodes" Collapsed="true">
-    <Position X="8.25" Y="4" Width="1.5" />
+    <Position X="0.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIBAGAOAAgBAAAAAEAAAAAAgAAAAAAAIAAAAAwgAA=</HashCode>
       <FileName>Objects and constants\ErrorCodes.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Order" Collapsed="true">
-    <Position X="8.25" Y="3.25" Width="1.5" />
+  <Class Name="Media_Store.Order">
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects and constants\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Media_Store.StringListEventArgs" Collapsed="true">
-    <Position X="11.5" Y="2.25" Width="1.5" />
+    <Position X="11.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects and constants\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Media_Store.ProductListEventArgs" Collapsed="true">
-    <Position X="11.5" Y="5.25" Width="1.5" />
+    <Position X="13.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Objects and constants\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Product" Collapsed="true">
+  <Class Name="Media_Store.Product">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQBAAAAAAAAAAAAAAAAAAgAAAAEAAAEAAAAAAAAAAA=</HashCode>
       <FileName>Objects and constants\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Book" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+  <Class Name="Media_Store.Book">
+    <Position X="0.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects and constants\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Movie" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+  <Class Name="Media_Store.Movie">
+    <Position X="2.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Objects and constants\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.CD" Collapsed="true">
-    <Position X="5" Y="1.75" Width="1.5" />
+  <Class Name="Media_Store.CD">
+    <Position X="5.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects and constants\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Game" Collapsed="true">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+  <Class Name="Media_Store.Game">
+    <Position X="7.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Objects and constants\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Media_Store.Program" Collapsed="true">
-    <Position X="4.25" Y="3.25" Width="1.5" />
+  <Class Name="Media_Store.Program">
+    <Position X="3.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -119,7 +119,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Media_Store.Properties.Settings" Collapsed="true">
-    <Position X="11.5" Y="3.25" Width="1.5" />
+    <Position X="11.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>

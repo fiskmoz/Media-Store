@@ -23,6 +23,8 @@ namespace Media_Store
         public event EventHandler<ProductListEventArgs> BuyProducts;
         public event EventHandler<StringListEventArgs> SearchProduct;
 
+        public event EventHandler<EventArgs> exportRegister; 
+
         private GUIHelper helper;
 
         private Order order;
@@ -169,6 +171,11 @@ namespace Media_Store
             var args = new StringListEventArgs();
             args.str.Add(searchBoxInventory.Text);
             SearchProduct(this, args);
+        }
+
+        private void exportButtonClick(object sender, EventArgs e)
+        {
+            exportRegister(this, new EventArgs());
         }
 
         internal void UpdateSearchFindings(List<Product> list)

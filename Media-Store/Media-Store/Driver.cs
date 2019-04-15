@@ -37,6 +37,12 @@ namespace Media_Store
             gui.BuyProductCheck += new EventHandler<StringListEventArgs>(BuyProductsCheck);
             gui.BuyProducts += new EventHandler<ProductListEventArgs>(BuyProducts);
             gui.SearchProduct += new EventHandler<StringListEventArgs>(SearchProducts);
+            gui.exportRegister += new EventHandler<EventArgs>(ExportProductRegister);
+        }
+
+        private void ExportProductRegister(object sender, EventArgs e)
+        {
+            gui.UpdateSuccessLabel(inventory.ExportProductRegister());
         }
 
         private void CreateBookEvent(object obj, StringListEventArgs e)

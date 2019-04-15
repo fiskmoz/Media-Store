@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Media_Store
 {
@@ -94,6 +95,21 @@ namespace Media_Store
                 }
                 stream.Close();
             }
+        }
+
+        internal int ExportProductRegister(List<Product> list)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select the folder that handles .txt integration!";
+            string sSelectedPath = AppDomain.CurrentDomain.BaseDirectory;
+            fbd.SelectedPath = sSelectedPath;
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                sSelectedPath = fbd.SelectedPath;
+                File.Copy(serializationFile, sSelectedPath + "/Inventory.txt");
+                return ErrorCodes.SUCCESS;
+            }
+            return ErrorCodes.INVALID_REMOVE_TARGET;
         }
 
         // If file does not exist for some reason run this.

@@ -41,6 +41,10 @@
             this.rebuyComboBox = new System.Windows.Forms.ComboBox();
             this.returnTheProductButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.searchViewStore = new System.Windows.Forms.ListView();
+            this.searchBoxStore = new System.Windows.Forms.TextBox();
+            this.searchButtonStore = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.receiptCheckBox = new System.Windows.Forms.CheckBox();
             this.itemsToBuyListView = new System.Windows.Forms.ListView();
@@ -94,14 +98,13 @@
             this.removeProductButton = new System.Windows.Forms.Button();
             this.removeProductBox = new System.Windows.Forms.ComboBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.searchViewInventory = new System.Windows.Forms.ListView();
+            this.searchBoxInventory = new System.Windows.Forms.TextBox();
             this.searchButtonInventory = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
-            this.searchBoxInventory = new System.Windows.Forms.TextBox();
-            this.searchViewInventory = new System.Windows.Forms.ListView();
-            this.searchViewStore = new System.Windows.Forms.ListView();
-            this.searchBoxStore = new System.Windows.Forms.TextBox();
-            this.searchButtonStore = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.storeTabPage.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -118,6 +121,7 @@
             this.orderMoreTab.SuspendLayout();
             this.removeProductTab.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -272,6 +276,51 @@
             this.tabPage3.Size = new System.Drawing.Size(475, 485);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Search";
+            // 
+            // searchViewStore
+            // 
+            this.searchViewStore.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchViewStore.Location = new System.Drawing.Point(54, 151);
+            this.searchViewStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchViewStore.Name = "searchViewStore";
+            this.searchViewStore.Size = new System.Drawing.Size(387, 305);
+            this.searchViewStore.TabIndex = 50;
+            this.searchViewStore.TileSize = new System.Drawing.Size(1, 1);
+            this.searchViewStore.UseCompatibleStateImageBehavior = false;
+            this.searchViewStore.View = System.Windows.Forms.View.List;
+            // 
+            // searchBoxStore
+            // 
+            this.searchBoxStore.Location = new System.Drawing.Point(54, 75);
+            this.searchBoxStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchBoxStore.Name = "searchBoxStore";
+            this.searchBoxStore.Size = new System.Drawing.Size(140, 22);
+            this.searchBoxStore.TabIndex = 49;
+            // 
+            // searchButtonStore
+            // 
+            this.searchButtonStore.BackColor = System.Drawing.Color.SteelBlue;
+            this.searchButtonStore.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.searchButtonStore.FlatAppearance.BorderSize = 5;
+            this.searchButtonStore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.searchButtonStore.Location = new System.Drawing.Point(243, 69);
+            this.searchButtonStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchButtonStore.Name = "searchButtonStore";
+            this.searchButtonStore.Size = new System.Drawing.Size(181, 35);
+            this.searchButtonStore.TabIndex = 48;
+            this.searchButtonStore.Text = "Search";
+            this.searchButtonStore.UseVisualStyleBackColor = false;
+            this.searchButtonStore.Click += new System.EventHandler(this.searchButtonStore_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(33, 29);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(219, 21);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Search for a product entry:";
             // 
             // panel1
             // 
@@ -487,6 +536,7 @@
             this.stockTabControl.Controls.Add(this.orderMoreTab);
             this.stockTabControl.Controls.Add(this.removeProductTab);
             this.stockTabControl.Controls.Add(this.tabPage4);
+            this.stockTabControl.Controls.Add(this.tabPage5);
             this.stockTabControl.Dock = System.Windows.Forms.DockStyle.Right;
             this.stockTabControl.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stockTabControl.Location = new System.Drawing.Point(442, 4);
@@ -859,6 +909,26 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Search";
             // 
+            // searchViewInventory
+            // 
+            this.searchViewInventory.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchViewInventory.Location = new System.Drawing.Point(58, 151);
+            this.searchViewInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchViewInventory.Name = "searchViewInventory";
+            this.searchViewInventory.Size = new System.Drawing.Size(387, 305);
+            this.searchViewInventory.TabIndex = 46;
+            this.searchViewInventory.TileSize = new System.Drawing.Size(1, 1);
+            this.searchViewInventory.UseCompatibleStateImageBehavior = false;
+            this.searchViewInventory.View = System.Windows.Forms.View.List;
+            // 
+            // searchBoxInventory
+            // 
+            this.searchBoxInventory.Location = new System.Drawing.Point(58, 75);
+            this.searchBoxInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchBoxInventory.Name = "searchBoxInventory";
+            this.searchBoxInventory.Size = new System.Drawing.Size(140, 22);
+            this.searchBoxInventory.TabIndex = 45;
+            // 
             // searchButtonInventory
             // 
             this.searchButtonInventory.BackColor = System.Drawing.Color.SteelBlue;
@@ -884,70 +954,42 @@
             this.label26.TabIndex = 43;
             this.label26.Text = "Search for a product entry:";
             // 
-            // searchBoxInventory
+            // tabPage5
             // 
-            this.searchBoxInventory.Location = new System.Drawing.Point(58, 75);
-            this.searchBoxInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchBoxInventory.Name = "searchBoxInventory";
-            this.searchBoxInventory.Size = new System.Drawing.Size(140, 22);
-            this.searchBoxInventory.TabIndex = 45;
+            this.tabPage5.BackColor = System.Drawing.Color.SkyBlue;
+            this.tabPage5.Controls.Add(this.exportButton);
+            this.tabPage5.Controls.Add(this.label28);
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(477, 485);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Export";
             // 
-            // searchViewInventory
+            // exportButton
             // 
-            this.searchViewInventory.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchViewInventory.Location = new System.Drawing.Point(58, 151);
-            this.searchViewInventory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchViewInventory.Name = "searchViewInventory";
-            this.searchViewInventory.Size = new System.Drawing.Size(387, 305);
-            this.searchViewInventory.TabIndex = 46;
-            this.searchViewInventory.TileSize = new System.Drawing.Size(1, 1);
-            this.searchViewInventory.UseCompatibleStateImageBehavior = false;
-            this.searchViewInventory.View = System.Windows.Forms.View.List;
+            this.exportButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.exportButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.exportButton.FlatAppearance.BorderSize = 5;
+            this.exportButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exportButton.Location = new System.Drawing.Point(70, 116);
+            this.exportButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(181, 35);
+            this.exportButton.TabIndex = 48;
+            this.exportButton.Text = "Export";
+            this.exportButton.UseVisualStyleBackColor = false;
+            this.exportButton.Click += new System.EventHandler(this.exportButtonClick);
             // 
-            // searchViewStore
+            // label28
             // 
-            this.searchViewStore.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchViewStore.Location = new System.Drawing.Point(54, 151);
-            this.searchViewStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchViewStore.Name = "searchViewStore";
-            this.searchViewStore.Size = new System.Drawing.Size(387, 305);
-            this.searchViewStore.TabIndex = 50;
-            this.searchViewStore.TileSize = new System.Drawing.Size(1, 1);
-            this.searchViewStore.UseCompatibleStateImageBehavior = false;
-            this.searchViewStore.View = System.Windows.Forms.View.List;
-            // 
-            // searchBoxStore
-            // 
-            this.searchBoxStore.Location = new System.Drawing.Point(54, 75);
-            this.searchBoxStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchBoxStore.Name = "searchBoxStore";
-            this.searchBoxStore.Size = new System.Drawing.Size(140, 22);
-            this.searchBoxStore.TabIndex = 49;
-            // 
-            // searchButtonStore
-            // 
-            this.searchButtonStore.BackColor = System.Drawing.Color.SteelBlue;
-            this.searchButtonStore.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.searchButtonStore.FlatAppearance.BorderSize = 5;
-            this.searchButtonStore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.searchButtonStore.Location = new System.Drawing.Point(243, 69);
-            this.searchButtonStore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchButtonStore.Name = "searchButtonStore";
-            this.searchButtonStore.Size = new System.Drawing.Size(181, 35);
-            this.searchButtonStore.TabIndex = 48;
-            this.searchButtonStore.Text = "Search";
-            this.searchButtonStore.UseVisualStyleBackColor = false;
-            this.searchButtonStore.Click += new System.EventHandler(this.searchButtonStore_Click);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(33, 29);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(219, 21);
-            this.label27.TabIndex = 47;
-            this.label27.Text = "Search for a product entry:";
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(62, 29);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(189, 21);
+            this.label28.TabIndex = 47;
+            this.label28.Text = "Export product register";
             // 
             // GUI
             // 
@@ -986,6 +1028,8 @@
             this.removeProductTab.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1066,6 +1110,9 @@
         private System.Windows.Forms.TextBox searchBoxInventory;
         private System.Windows.Forms.Button searchButtonInventory;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button exportButton;
+        private System.Windows.Forms.Label label28;
     }
 }
 

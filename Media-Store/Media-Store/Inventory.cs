@@ -140,6 +140,11 @@ namespace Media_Store
             return ErrorCodes.SUCCESS;
         }
 
+        internal int ExportProductRegister()
+        {
+            return fileManager.ExportProductRegister(CurrentProducts);
+        }
+
         // Get the no. of copies for a speicifc ID.
         internal int GetCopies(string ID)
         {
