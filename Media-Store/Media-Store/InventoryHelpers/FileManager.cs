@@ -11,6 +11,7 @@ namespace Media_Store
     class FileManager
     {
         private string serializationFile;
+        private string lastOpen = "";
 
         public FileManager()
         {
@@ -101,12 +102,23 @@ namespace Media_Store
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.Description = "Select the folder that handles .txt integration!";
-            string sSelectedPath = AppDomain.CurrentDomain.BaseDirectory;
-            fbd.SelectedPath = sSelectedPath;
+            if (lastOpen == "")
+            {
+                lastOpen = AppDomain.CurrentDomain.BaseDirectory;
+            }
+            fbd.SelectedPath = lastOpen;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                sSelectedPath = fbd.SelectedPath;
-                File.Copy(serializationFile, sSelectedPath + "/Inventory.txt");
+                string sSelectedPath = fbd.SelectedPath;
+                try
+                {
+                    File.Copy(serializationFile, sSelectedPath + "/Inventory.txt", true);
+
+                }
+                catch
+                {
+
+                }
                 return ErrorCodes.SUCCESS;
             }
             return ErrorCodes.INVALID_REMOVE_TARGET;

@@ -16,9 +16,7 @@ namespace Media_Store
         
         internal int CreateValidation(List<string> toValidate, List<Product> comparision)
         {
-            if (!CheckDuplicates(comparision, toValidate[0]))
-                return ErrorCodes.INVALID_IDENTIFER;
-            if (!CheckInputsize(toValidate[0]))
+            if (!CheckDuplicates(comparision, toValidate[0]) || !IntParsing(toValidate[0]) || !CheckInputsize(toValidate[0]))
                 return ErrorCodes.INVALID_IDENTIFER;
             if (!CheckInputsize(toValidate[1]))
                 return ErrorCodes.INVALID_NAME;
@@ -47,7 +45,7 @@ namespace Media_Store
 
         private bool CheckInputsize(string str)
         {
-            if (str.Length > 20 || str.Length < 2)
+            if (str.Length > 20 || str.Length < 1)
                 return false;
             return true;
         }
